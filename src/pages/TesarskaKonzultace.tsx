@@ -1,7 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Check, MessageSquare, FileText, HardHat, Lightbulb } from "lucide-react";
+import { ArrowRight, Check, MessageSquare, FileText, Lightbulb } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const consultationTypes = [
@@ -14,11 +14,6 @@ const consultationTypes = [
     icon: FileText,
     title: "Posouzení projektové dokumentace",
     description: "Zkontrolujeme vaši projektovou dokumentaci a upozorníme na případné nedostatky nebo možnosti optimalizace.",
-  },
-  {
-    icon: HardHat,
-    title: "Technický dozor",
-    description: "Dohlédneme na správné provádění tesařských prací na vaší stavbě, i když je realizuje jiná firma.",
   },
   {
     icon: MessageSquare,
