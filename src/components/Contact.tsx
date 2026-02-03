@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Phone, Mail, MapPin, Send } from "lucide-react";
+import { Phone, Mail, MapPin, Send, Upload, X, FileText, Image } from "lucide-react";
 import { toast } from "sonner";
 
 const Contact = () => {
@@ -12,7 +12,37 @@ const Contact = () => {
     phone: "",
     message: "",
   });
+  const [files, setFiles] = useState<File[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      const newFiles = Array.from(e.target.files);
+      const validFiles = newFiles.filter(file => {
+        const isValidType = file.type.startsWith('image/') || file.type === 'application/pdf';
+        const isValidSize = file.size <= 10 * 1024 * 1024; // 10MB limit
+        if (!isValidType) {
+          toast.error(`Soubor "${file.name}" není podporovaný. Povolené formáty: obrázky, PDF.`);
+        }
+        if (!isValidSize) {
+          toast.error(`Soubor "${file.name}" je příliš velký. Max. velikost: 10 MB.`);
+        }
+        return isValidType && isValidSize;
+      });
+      setFiles(prev => [...prev, ...validFiles]);
+    }
+  };
+
+  const removeFile = (index: number) => {
+    setFiles(prev => prev.filter((_, i) => i !== index));
+  };
+
+  const formatFileSize = (bytes: number) => {
+    if (bytes < 1024) return bytes + ' B';
+    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+    return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+  };
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -30,6 +60,7 @@ const Contact = () => {
 
     toast.success("Zpráva byla odeslána! Brzy se vám ozveme.");
     setFormData({ name: "", email: "", phone: "", message: "" });
+    setFiles([]);
     setIsSubmitting(false);
   };
 
@@ -193,6 +224,69 @@ const Contact = () => {
                   placeholder="Popište váš projekt nebo dotaz..."
                   className="w-full resize-none"
                 />
+              </div>
+
+              {/* File Upload */}
+              <div>
+                <label className="block text-sm font-medium text-foreground mb-2">
+                  Přílohy (stavební dokumentace, foto)
+                </label>
+                <div
+                  className="border-2 border-dashed border-border rounded-lg p-6 text-center cursor-pointer hover:border-primary/50 transition-colors"
+                  onClick={() => fileInputRef.current?.click()}
+                >
+                  <Upload className="w-8 h-8 mx-auto mb-2 text-muted-foreground" />
+                  <p className="text-sm text-muted-foreground">
+                    Klikněte pro nahrání souborů
+                  </p>
+                  <p className="text-xs text-muted-foreground mt-1">
+                    Podporované formáty: obrázky, PDF (max. 10 MB na soubor)
+                  </p>
+                </div>
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  multiple
+                  accept="image/*,.pdf"
+                  onChange={handleFileChange}
+                  className="hidden"
+                />
+
+                {/* File list */}
+                {files.length > 0 && (
+                  <div className="mt-4 space-y-2">
+                    {files.map((file, index) => (
+                      <div
+                        key={index}
+                        className="flex items-center gap-3 p-3 bg-secondary rounded-lg"
+                      >
+                        {file.type.startsWith('image/') ? (
+                          <Image className="w-5 h-5 text-primary" />
+                        ) : (
+                          <FileText className="w-5 h-5 text-primary" />
+                        )}
+                        <div className="flex-1 min-w-0">
+                          <p className="text-sm font-medium text-foreground truncate">
+                            {file.name}
+                          </p>
+                          <p className="text-xs text-muted-foreground">
+                            {formatFileSize(file.size)}
+                          </p>
+                        </div>
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            removeFile(index);
+                          }}
+                          className="p-1 hover:bg-background rounded transition-colors"
+                        >
+                          <X className="w-4 h-4 text-muted-foreground" />
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
 
               <Button
