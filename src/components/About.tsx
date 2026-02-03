@@ -18,7 +18,7 @@ const About = () => {
             O naší firmě
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Tesařina je naše rodinné řemeslo, které předáváme z generace na generaci již více než 100 let.
+            Tesařina je naše rodinné řemeslo, které předáváme z generace na generaci.
           </p>
         </div>
 
@@ -39,12 +39,17 @@ const About = () => {
           {/* Content */}
           <div className="animate-slide-up">
             <h3 className="text-2xl md:text-3xl font-serif font-bold text-foreground mb-6">
-              Rodinná tradice od roku 1920
+              Řemeslo předávané z generace na generaci
             </h3>
             <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-              Naše rodina se tesařskému řemeslu věnuje již více než <strong>4 generace</strong>. 
-              Začínali jsme jako malá rodinná dílna a dnes jsme hrdí na to, že můžeme 
-              pokračovat v tradici našich předků s využitím moderních technologií.
+              Naše rodina se tesařskému řemeslu věnuje již <strong>4 generace</strong>. 
+              Znalosti a dovednosti byly vždy předávány z otce na syna – od základů 
+              práce se dřevem až po složité krovové konstrukce.
+            </p>
+            <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
+              Po revoluci v roce 1989 začal můj otec podnikat jako OSVČ a postupně 
+              vybudoval základy dnešní firmy. Dnes pokračujeme jako <strong>krovykv.cz s.r.o.</strong> 
+              s využitím moderních technologií a tradičních tesařských postupů.
             </p>
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
               Věříme, že kvalitní tesařská práce vyžaduje nejen zkušenosti, ale především 
