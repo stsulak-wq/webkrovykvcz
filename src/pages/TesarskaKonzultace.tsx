@@ -4,22 +4,13 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Check, Search, Droplets, FileText, Ruler } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
-const consultationTypes = [
-  {
-    icon: Search,
-    title: "Prohlídka a zhodnocení krovu",
-    description: "Vizuální prohlídka stávající konstrukce, zjištění stavu trámů a návrh případné opravy z pohledu tesaře.",
-  },
-  {
-    icon: FileText,
-    title: "Zápis z prohlídky",
-    description: "Písemný zápis z prohlídky s popisem zjištěného stavu, fotodokumentací a doporučením dalšího postupu.",
-  },
-  {
-    icon: Ruler,
-    title: "Cenová nabídka na opravu",
-    description: "Na základě prohlídky připravíme orientační cenovou nabídku na tesařské práce potřebné k opravě.",
-  },
+const consultationTopics = [
+  "Výběr typu krovu pro novostavbu",
+  "Volba materiálů a jejich vlastnosti",
+  "Postup při rekonstrukci střechy",
+  "Opravy a údržba dřevěných konstrukcí",
+  "Pergoly, přístřešky a balkony",
+  "Cokoliv dalšího z oblasti tesařství",
 ];
 
 const diagnostikaFeatures = [
@@ -78,8 +69,8 @@ const TesarskaKonzultace = () => {
                 Tesařská konzultace
               </h1>
               <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-                Potřebujete zhodnotit stav krovu před rekonstrukcí? Jako tesaři vám můžeme 
-                poskytnout řemeslný pohled na vaši střešní konstrukci a navrhnout opravu.
+                Máte dotaz ohledně tesařství? Rádi vám poradíme. Nabízíme také 
+                kompletní prohlídku a zhodnocení stávajícího krovu.
               </p>
               <Button size="xl" className="group" onClick={scrollToContact}>
                 Domluvit konzultaci
@@ -89,50 +80,50 @@ const TesarskaKonzultace = () => {
           </div>
         </section>
 
-        {/* What we offer */}
+        {/* General consultation */}
         <section className="section-padding bg-background">
           <div className="container-custom px-4">
-            <div className="text-center mb-12 md:mb-16">
-              <h2 className="text-3xl md:text-4xl font-serif font-bold text-foreground mb-4">
-                Co vám jako tesaři můžeme nabídnout?
-              </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                V rámci tesařské živnosti provádíme prohlídky krovů pro účely opravy nebo plánované rekonstrukce.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-              {consultationTypes.map((type, index) => (
-                <div
-                  key={index}
-                  className="bg-card p-6 md:p-8 rounded-lg border border-border"
-                >
-                  <div className="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
-                    <type.icon className="w-7 h-7 text-primary" />
-                  </div>
-                  <h3 className="text-xl md:text-2xl font-serif font-semibold text-foreground mb-3">
-                    {type.title}
-                  </h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {type.description}
-                  </p>
-                </div>
-              ))}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <div>
+                <h2 className="text-3xl md:text-4xl font-serif font-bold text-foreground mb-6">
+                  Poraďte se s tesařem
+                </h2>
+                <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
+                  Můžete si s námi domluvit konzultaci na <strong>jakékoliv téma z oblasti tesařství</strong>. 
+                  Ať už plánujete stavbu, rekonstrukci, nebo potřebujete jen poradit – jsme tu pro vás.
+                </p>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  Konzultace může proběhnout osobně, telefonicky nebo online – jak vám vyhovuje.
+                </p>
+              </div>
+              <div className="bg-secondary rounded-xl p-8">
+                <h3 className="text-xl font-serif font-bold text-foreground mb-6">
+                  S čím vám můžeme poradit?
+                </h3>
+                <ul className="space-y-3">
+                  {consultationTopics.map((topic, index) => (
+                    <li key={index} className="flex items-center gap-3">
+                      <div className="w-2 h-2 bg-primary rounded-full flex-shrink-0" />
+                      <span className="text-foreground">{topic}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Diagnostika krovů - detailed section */}
-        <section className="section-padding bg-background">
+        {/* Prohlídka krovu - detailed section */}
+        <section className="section-padding bg-secondary">
           <div className="container-custom px-4">
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-12">
                 <h2 className="text-3xl md:text-4xl font-serif font-bold text-foreground mb-4">
-                  Jak prohlídka probíhá?
+                  Prohlídka a zhodnocení stávajícího krovu
                 </h2>
                 <p className="text-lg text-muted-foreground">
-                  Přijedeme na stavbu, prohlédneme krov a zjistíme, které trámy jsou poškozené, 
-                  shnilé nebo napadené tesaříkem. Na základě prohlídky navrhneme rozsah opravy.
+                  Nabízíme také kompletní prohlídku krovu. Přijedeme na stavbu, prohlédneme konstrukci 
+                  a zjistíme, které trámy jsou poškozené, shnilé nebo napadené tesaříkem.
                 </p>
               </div>
 
