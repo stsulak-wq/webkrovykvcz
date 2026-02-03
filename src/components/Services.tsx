@@ -22,9 +22,9 @@ const services = [
   },
   {
     icon: DoorOpen,
-    title: "Dřevěné lodžie",
+    title: "Dřevěné balkony",
     description:
-      "Kvalitní dřevěné lodžie a balkónové konstrukce. Funkční a estetické řešení pro váš domov s důrazem na dlouhou životnost.",
+      "Kvalitní dřevěné balkony a balkónové konstrukce. Funkční a estetické řešení pro váš domov s důrazem na dlouhou životnost.",
   },
 ];
 
