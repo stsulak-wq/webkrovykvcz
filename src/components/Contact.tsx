@@ -58,10 +58,10 @@ const Contact = () => {
                   Telefon
                 </h3>
                 <a
-                  href="tel:+420123456789"
+                  href="tel:+420725716937"
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
-                  +420 123 456 789
+                  +420 725 716 937
                 </a>
               </div>
             </div>
@@ -92,9 +92,9 @@ const Contact = () => {
                   Adresa
                 </h3>
                 <p className="text-muted-foreground">
-                  Karlovy Vary a okolí
+                  Hornická 26
                   <br />
-                  Karlovarský kraj
+                  360 01, Karlovy Vary
                 </p>
               </div>
             </div>
@@ -102,14 +102,14 @@ const Contact = () => {
             {/* Map placeholder */}
             <div className="aspect-video rounded-lg overflow-hidden bg-muted border border-border">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d82244.4901897842!2d12.796841299999999!3d50.2306207!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a07f89b4cc7dbb%3A0x5d4c6b7ce7e0d4db!2sKarlovy%20Vary!5e0!3m2!1scs!2scz!4v1707000000000!5m2!1scs!2scz"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2547.8!2d12.8697!3d50.2297!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a07f9!2sHornick%C3%A1%2026%2C%20360%2001%20Karlovy%20Vary!5e0!3m2!1scs!2scz!4v1707000000000!5m2!1scs!2scz"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Mapa - Karlovy Vary"
+                title="Mapa - Hornická 26, Karlovy Vary"
               />
             </div>
           </div>
