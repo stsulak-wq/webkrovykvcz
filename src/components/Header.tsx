@@ -11,6 +11,7 @@ const Header = () => {
   const navLinks = [
     { href: "#sluzby", label: "Služby", type: "scroll" },
     { href: "/drevene-balkony", label: "Dřevěné balkony", type: "route" },
+    { href: "/tesarska-konzultace", label: "Konzultace", type: "route" },
     { href: "#o-nas", label: "O nás", type: "scroll" },
     { href: "#reference", label: "Reference", type: "scroll" },
     { href: "#kontakt", label: "Kontakt", type: "scroll" },
