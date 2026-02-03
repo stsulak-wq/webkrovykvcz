@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import BalkonyGallery from "@/components/BalkonyGallery";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Check, Ruler, Hammer, Paintbrush, ClipboardCheck } from "lucide-react";
 import { useNavigate } from "react-router-dom";
@@ -113,8 +114,11 @@ const DreveneBalkony = () => {
           </div>
         </section>
 
+        {/* Gallery Section */}
+        <BalkonyGallery />
+
         {/* Process Section */}
-        <section className="section-padding bg-secondary">
+        <section className="section-padding bg-background">
           <div className="container-custom px-4">
             <div className="text-center mb-12 md:mb-16">
               <h2 className="text-3xl md:text-4xl font-serif font-bold text-foreground mb-4">
