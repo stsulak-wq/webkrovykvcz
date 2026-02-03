@@ -86,21 +86,17 @@ const About = () => {
               <h3 className="text-2xl md:text-3xl font-serif font-bold text-foreground mb-2">
                 Ing. Štefan Sulák
               </h3>
-              <p className="text-primary font-semibold mb-4">Majitel a hlavní tesař</p>
+              <p className="text-primary font-semibold mb-4">Jednatel a tesař</p>
               <p className="text-muted-foreground leading-relaxed mb-6">
                 „Tesařina není jen práce – je to způsob života, který mi předali 
-                můj otec a dědeček. Každý den vstávám s vědomím, že pokračuji 
-                v tradici, která v naší rodině žije již čtyři generace. 
+                můj otec a dědeček. Se dřevem pracuji již od svých 14 let a každý den 
+                vstávám s vědomím, že pokračuji v tradici naší rodiny. 
                 Mým posláním je vytvářet konstrukce, které budou sloužit dalším generacím."
               </p>
               <div className="flex flex-wrap gap-6 justify-center md:justify-start">
                 <div className="flex items-center gap-2">
                   <Award className="w-5 h-5 text-primary" />
                   <span className="text-sm font-medium">Certifikovaný tesař</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Clock className="w-5 h-5 text-primary" />
-                  <span className="text-sm font-medium">20+ let praxe</span>
                 </div>
               </div>
             </div>
