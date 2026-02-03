@@ -1,6 +1,6 @@
-import { Check, Award, Users, Clock } from "lucide-react";
+import { Check, Award, Clock } from "lucide-react";
 import aboutImage from "@/assets/about-carpenter.jpg";
-
+import founderImage from "@/assets/stefan-sulak.png";
 const features = [
   "Více než 4 generace tesařského řemesla",
   "Rodinná tradice a poctivá práce",
@@ -68,8 +68,12 @@ const About = () => {
         <div className="bg-secondary rounded-xl p-8 md:p-12">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
             <div className="md:col-span-1 flex justify-center">
-              <div className="w-48 h-48 md:w-56 md:h-56 rounded-full bg-primary/10 flex items-center justify-center border-4 border-primary/20">
-                <Users className="w-24 h-24 text-primary/40" />
+              <div className="w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden border-4 border-primary/20 shadow-xl">
+                <img
+                  src={founderImage}
+                  alt="Ing. Štefan Sulák"
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
             <div className="md:col-span-2 text-center md:text-left">
