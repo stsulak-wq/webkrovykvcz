@@ -4,6 +4,7 @@ import BalkonyGallery from "@/components/BalkonyGallery";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Check, Ruler, Hammer, Paintbrush, ClipboardCheck } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import heroBalkony from "@/assets/balkony/hero-balkony.jpg";
 
 const processSteps = [
   {
@@ -55,13 +56,18 @@ const DreveneBalkony = () => {
       <Header />
       <main>
         {/* Hero Section */}
-        <section className="pt-32 pb-16 md:pt-40 md:pb-24 bg-gradient-to-b from-secondary to-background">
-          <div className="container-custom px-4">
+        <section className="relative pt-32 pb-16 md:pt-40 md:pb-24 overflow-hidden">
+          <div 
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: `url(${heroBalkony})` }}
+          />
+          <div className="absolute inset-0 bg-black/60" />
+          <div className="container-custom px-4 relative z-10">
             <div className="max-w-4xl mx-auto text-center">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-foreground mb-6">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6">
                 Dřevěné balkony
               </h1>
-              <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
+              <p className="text-lg md:text-xl text-white/90 mb-8 max-w-3xl mx-auto">
                 Kvalitní dřevěné balkony a balkónové konstrukce na míru. 
                 Spojujeme tradiční tesařské řemeslo s moderními požadavky na bydlení.
               </p>
