@@ -1,4 +1,5 @@
-import { Home, Hammer, TreePine, DoorOpen } from "lucide-react";
+import { Home, Hammer, TreePine, DoorOpen, ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const services = [
   {
@@ -57,6 +58,18 @@ const Services = () => {
               </p>
             </div>
           ))}
+        </div>
+
+        {/* CTA */}
+        <div className="text-center mt-12">
+          <Button
+            size="lg"
+            className="group"
+            onClick={() => document.querySelector("#kontakt")?.scrollIntoView({ behavior: "smooth" })}
+          >
+            Poptat služby
+            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+          </Button>
         </div>
       </div>
     </section>

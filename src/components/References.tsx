@@ -1,3 +1,5 @@
+import { ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import refPergola from "@/assets/ref-pergola.jpg";
 import refKrov from "@/assets/ref-krov.jpg";
 import refPristresek from "@/assets/ref-pristresek.jpg";
@@ -63,6 +65,21 @@ const References = () => {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* CTA */}
+        <div className="text-center mt-12">
+          <p className="text-muted-foreground mb-4">
+            Chcete podobnou realizaci? Rádi vám připravíme nabídku.
+          </p>
+          <Button
+            size="lg"
+            className="group"
+            onClick={() => document.querySelector("#kontakt")?.scrollIntoView({ behavior: "smooth" })}
+          >
+            Nezávazná poptávka
+            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+          </Button>
         </div>
       </div>
     </section>

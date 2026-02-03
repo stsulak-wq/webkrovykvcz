@@ -1,4 +1,5 @@
-import { Check, Award, Clock } from "lucide-react";
+import { Check, Award, Clock, ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import aboutImage from "@/assets/about-carpenter.jpg";
 import founderImage from "@/assets/stefan-sulak.png";
 const features = [
@@ -98,6 +99,18 @@ const About = () => {
                 </div>
               </div>
             </div>
+          </div>
+
+          {/* CTA */}
+          <div className="mt-8 text-center md:text-left md:col-span-2 md:ml-auto">
+            <Button
+              size="lg"
+              className="group"
+              onClick={() => document.querySelector("#kontakt")?.scrollIntoView({ behavior: "smooth" })}
+            >
+              Kontaktovat nás
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </Button>
           </div>
         </div>
       </div>
