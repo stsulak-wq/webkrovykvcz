@@ -18,6 +18,24 @@ import balkon7 from "@/assets/balkony/balkon-7.jpg";
 import balkon8 from "@/assets/balkony/balkon-8.jpg";
 import balkon9 from "@/assets/balkony/balkon-9.jpg";
 import balkon10 from "@/assets/balkony/balkon-10.jpg";
+import balkon11 from "@/assets/balkony/balkon-11.jpg";
+import balkon12 from "@/assets/balkony/balkon-12.jpg";
+import balkon13 from "@/assets/balkony/balkon-13.jpg";
+import balkon14 from "@/assets/balkony/balkon-14.jpg";
+import balkon15 from "@/assets/balkony/balkon-15.jpg";
+import balkon16 from "@/assets/balkony/balkon-16.jpg";
+import balkon17 from "@/assets/balkony/balkon-17.jpg";
+import balkon18 from "@/assets/balkony/balkon-18.jpg";
+import balkon19 from "@/assets/balkony/balkon-19.jpg";
+import balkon20 from "@/assets/balkony/balkon-20.jpg";
+import balkon21 from "@/assets/balkony/balkon-21.jpg";
+import balkon22 from "@/assets/balkony/balkon-22.jpg";
+import balkon23 from "@/assets/balkony/balkon-23.jpg";
+import balkon24 from "@/assets/balkony/balkon-24.jpg";
+import balkon25 from "@/assets/balkony/balkon-25.jpg";
+import balkon26 from "@/assets/balkony/balkon-26.jpg";
+import balkon27 from "@/assets/balkony/balkon-27.jpg";
+import balkon28 from "@/assets/balkony/balkon-28.jpg";
 
 const images = [
   { src: balkon1, alt: "Dřevěný balkón - realizace 1" },
@@ -30,6 +48,24 @@ const images = [
   { src: balkon8, alt: "Dřevěný balkón - realizace 8" },
   { src: balkon9, alt: "Dřevěný balkón - realizace 9" },
   { src: balkon10, alt: "Dřevěný balkón - realizace 10" },
+  { src: balkon11, alt: "Dřevěný balkón - realizace 11" },
+  { src: balkon12, alt: "Dřevěný balkón - realizace 12" },
+  { src: balkon13, alt: "Dřevěný balkón - realizace 13" },
+  { src: balkon14, alt: "Dřevěný balkón - realizace 14" },
+  { src: balkon15, alt: "Dřevěný balkón - realizace 15" },
+  { src: balkon16, alt: "Dřevěný balkón - realizace 16" },
+  { src: balkon17, alt: "Dřevěný balkón - realizace 17" },
+  { src: balkon18, alt: "Dřevěný balkón - realizace 18" },
+  { src: balkon19, alt: "Dřevěný balkón - realizace 19" },
+  { src: balkon20, alt: "Dřevěný balkón - realizace 20" },
+  { src: balkon21, alt: "Dřevěný balkón - realizace 21" },
+  { src: balkon22, alt: "Dřevěný balkón - realizace 22" },
+  { src: balkon23, alt: "Dřevěný balkón - realizace 23" },
+  { src: balkon24, alt: "Dřevěný balkón - realizace 24" },
+  { src: balkon25, alt: "Dřevěný balkón - realizace 25" },
+  { src: balkon26, alt: "Dřevěný balkón - realizace 26" },
+  { src: balkon27, alt: "Dřevěný balkón - realizace 27" },
+  { src: balkon28, alt: "Dřevěný balkón - realizace 28" },
 ];
 
 const BalkonyGallery = () => {
