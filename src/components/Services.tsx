@@ -37,7 +37,8 @@ const Services = () => {
             Naše služby
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Nabízíme širokou škálu tesařských a stavebních prací s důrazem na kvalitu a spokojenost zákazníka.
+            Ke každému projektu přistupujeme individuálně. Ať už hledáte rychlé 
+            a efektivní řešení nebo tradiční pohledovou konstrukci s důrazem na detail.
           </p>
         </div>
 

@@ -4,9 +4,9 @@ import aboutImage from "@/assets/about-carpenter.jpg";
 import founderImage from "@/assets/stefan-sulak.png";
 const features = [
   "Více než 4 generace tesařského řemesla",
-  "Rodinná tradice a poctivá práce",
-  "Kvalitní materiály a tradiční postupy",
   "Individuální přístup ke každému projektu",
+  "Moderní technologie i tradiční postupy",
+  "Flexibilita – rychlost nebo detail, podle vašich potřeb",
 ];
 
 const About = () => {
@@ -52,9 +52,9 @@ const About = () => {
               s využitím moderních technologií a tradičních tesařských postupů.
             </p>
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              Věříme, že kvalitní tesařská práce vyžaduje nejen zkušenosti, ale především 
-              lásku k řemeslu a respekt k materiálu. Každý krov, každá konstrukce 
-              je pro nás výzvou a příležitostí dokázat, že tradiční řemeslo má stále své místo.
+              Chápeme, že každý projekt je jiný. Někdy je potřeba rychlost a jednoduchost, 
+              jindy zase precizní pohledová konstrukce s důrazem na každý detail. 
+              Nabízíme obojí – moderní efektivitu i tradiční řemeslnou péči.
             </p>
 
             <ul className="space-y-4">

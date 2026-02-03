@@ -32,11 +32,11 @@ const Hero = () => {
         <div className="max-w-3xl animate-fade-in">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-primary-foreground leading-tight mb-6">
             Tesařské práce a krovy
-            <span className="block text-wood-light">s tradicí a kvalitou</span>
+            <span className="block text-wood-light">tradice i moderní přístup</span>
           </h1>
           <p className="text-lg md:text-xl text-primary-foreground/90 mb-8 max-w-2xl">
-            Jsme rodinná firma s dlouholetou tradicí. Specializujeme se na výrobu 
-            a montáž krovů, pergol a dřevěných konstrukcí na míru.
+            Každý projekt je jedinečný. Nabízíme tradiční pohledové konstrukce 
+            s důrazem na detail i moderní řešení s efektivitou a rychlostí výstavby.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Button 
