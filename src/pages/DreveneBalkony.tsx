@@ -165,24 +165,24 @@ const DreveneBalkony = () => {
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
                 <div className="bg-card p-6 rounded-lg border border-border text-center">
-                  <h3 className="text-lg font-semibold text-foreground mb-3">Smrkové dřevo</h3>
+                  <h3 className="text-lg font-semibold text-foreground mb-3">Klasické řezivo</h3>
                   <p className="text-muted-foreground text-sm">
-                    Nejpoužívanější materiál s výborným poměrem ceny a kvality. 
-                    Snadno se opracovává a přijímá povrchové úpravy.
+                    Tradiční materiál s výborným poměrem ceny a kvality. 
+                    Vhodné pro standardní konstrukce a běžné zatížení.
                   </p>
                 </div>
                 <div className="bg-card p-6 rounded-lg border border-border text-center">
-                  <h3 className="text-lg font-semibold text-foreground mb-3">Modřínové dřevo</h3>
+                  <h3 className="text-lg font-semibold text-foreground mb-3">KVH (Konstrukční dřevo)</h3>
                   <p className="text-muted-foreground text-sm">
-                    Prémiová varianta s přirozenou odolností proti povětrnostním vlivům. 
-                    Krásná přirozená barva a vysoká trvanlivost.
+                    Vysušené a hoblované konstrukční dřevo. 
+                    Přesné rozměry, minimální deformace a vyšší únosnost.
                   </p>
                 </div>
                 <div className="bg-card p-6 rounded-lg border border-border text-center">
-                  <h3 className="text-lg font-semibold text-foreground mb-3">Dubové dřevo</h3>
+                  <h3 className="text-lg font-semibold text-foreground mb-3">BSH (Lepené lamelové dřevo)</h3>
                   <p className="text-muted-foreground text-sm">
-                    Exkluzivní volba pro náročné zákazníky. 
-                    Výjimečná tvrdost, trvanlivost a estetická hodnota.
+                    Prémiový materiál pro náročné konstrukce. 
+                    Maximální pevnost, rozměrová stálost a dlouhá životnost.
                   </p>
                 </div>
               </div>
