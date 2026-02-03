@@ -49,7 +49,7 @@ const Header = () => {
           {/* Logo */}
           <button onClick={handleLogoClick} className="flex items-center gap-2">
             <span className="text-2xl md:text-3xl font-serif font-bold text-primary">
-              KrovyKV
+              krovykv.cz
             </span>
           </button>
 
