@@ -10,12 +10,6 @@ const services = [
       "Návrh a realizace tradičních i moderních krovových konstrukcí. Používáme kvalitní materiály a osvědčené technologie.",
   },
   {
-    icon: Hammer,
-    title: "Tesařské práce",
-    description:
-      "Kompletní tesařské služby od návrhu po realizaci. Dřevěné konstrukce na míru podle vašich požadavků.",
-  },
-  {
     icon: TreePine,
     title: "Pergoly a přístřešky",
     description:
