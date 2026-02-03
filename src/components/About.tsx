@@ -47,7 +47,7 @@ const About = () => {
               práce se dřevem až po složité krovové konstrukce.
             </p>
             <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-              Po revoluci v roce 1989 začal můj otec podnikat jako OSVČ a postupně 
+              V roce 1992 začal můj otec podnikat jako OSVČ a postupně 
               vybudoval základy dnešní firmy. Dnes pokračujeme jako <strong>krovykv.cz s.r.o.</strong> 
               s využitím moderních technologií a tradičních tesařských postupů.
             </p>
