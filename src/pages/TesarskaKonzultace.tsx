@@ -1,7 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Check, MessageSquare, FileText, Lightbulb } from "lucide-react";
+import { ArrowRight, Check, MessageSquare, FileText, Lightbulb, Search, Droplets, Camera, Thermometer, Ruler } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const consultationTypes = [
@@ -16,9 +16,32 @@ const consultationTypes = [
     description: "Zkontrolujeme vaši projektovou dokumentaci a upozorníme na případné nedostatky nebo možnosti optimalizace.",
   },
   {
-    icon: MessageSquare,
-    title: "Konzultace stávajících konstrukcí",
-    description: "Posoudíme stav vašeho stávajícího krovu nebo dřevěné konstrukce a navrhneme případné opravy.",
+    icon: Search,
+    title: "Diagnostika a revize krovů",
+    description: "Odborné řemeslné zhodnocení stávajícího krovu před rekonstrukcí. Technická zpráva o stavu konstrukce s návrhem řešení.",
+  },
+];
+
+const diagnostikaFeatures = [
+  {
+    icon: Search,
+    title: "Vizuální prohlídka",
+    description: "Odhalení viditelných vad, poškození a problematických míst konstrukce.",
+  },
+  {
+    icon: Droplets,
+    title: "Sondy do dřeva",
+    description: "Měření vlhkosti a zjištění hloubkové degradace, dutin či napadení dřevokazným hmyzem.",
+  },
+  {
+    icon: Ruler,
+    title: "Návrh řešení a odhad nákladů",
+    description: "Konkrétní doporučení pro opravu včetně orientačního odhadu nákladů na realizaci.",
+  },
+  {
+    icon: FileText,
+    title: "Pasportizace",
+    description: "Zaměření skutečného stavu konstrukce, pokud k domu chybí původní plány.",
   },
 ];
 
@@ -28,6 +51,7 @@ const benefits = [
   "Prevence chyb a problémů při realizaci",
   "Zkušenosti z desítek realizovaných projektů",
   "Srozumitelné vysvětlení technických detailů",
+  "Písemná technická zpráva o stavu konstrukce",
 ];
 
 const TesarskaKonzultace = () => {
@@ -78,7 +102,7 @@ const TesarskaKonzultace = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
               {consultationTypes.map((type, index) => (
                 <div
                   key={index}
@@ -95,6 +119,61 @@ const TesarskaKonzultace = () => {
                   </p>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Diagnostika krovů - detailed section */}
+        <section className="section-padding bg-background">
+          <div className="container-custom px-4">
+            <div className="max-w-4xl mx-auto">
+              <div className="text-center mb-12">
+                <h2 className="text-3xl md:text-4xl font-serif font-bold text-foreground mb-4">
+                  Odborná diagnostika a revize krovů
+                </h2>
+                <p className="text-lg text-muted-foreground">
+                  Plánujete rekonstrukci nebo máte podezření na poškození krovu? 
+                  Provedeme odborné řemeslné zhodnocení a vypracujeme technickou zprávu o stavu konstrukce.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+                {diagnostikaFeatures.map((feature, index) => (
+                  <div
+                    key={index}
+                    className="bg-card p-6 rounded-lg border border-border flex gap-4"
+                  >
+                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <feature.icon className="w-6 h-6 text-primary" />
+                    </div>
+                    <div>
+                      <h4 className="text-lg font-semibold text-foreground mb-2">
+                        {feature.title}
+                      </h4>
+                      <p className="text-muted-foreground text-sm">
+                        {feature.description}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="bg-secondary rounded-xl p-8">
+                <h3 className="text-xl font-serif font-bold text-foreground mb-4">
+                  Co získáte?
+                </h3>
+                <p className="text-muted-foreground mb-6 leading-relaxed">
+                  Po prohlídce obdržíte <strong>písemnou technickou zprávu o stavu konstrukce</strong> s dokumentací 
+                  zjištěných vad, fotodokumentací a konkrétním návrhem řešení včetně orientačního odhadu nákladů na opravu.
+                </p>
+                <div className="bg-card rounded-lg p-6 border border-border">
+                  <p className="text-sm text-muted-foreground italic">
+                    <strong>Poznámka:</strong> Jedná se o odborné řemeslné zhodnocení v rámci tesařské živnosti. 
+                    Pro účely stavebního řízení nebo bankovních institucí může být vyžadován statický posudek 
+                    od autorizovaného inženýra – v takovém případě vás rádi odkážeme na spolupracující odborníky.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </section>
