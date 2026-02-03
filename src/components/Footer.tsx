@@ -10,10 +10,11 @@ const Footer = () => {
             <span className="text-2xl font-serif font-bold block mb-4">krovykv.cz</span>
             <div className="text-primary-foreground/70 text-sm space-y-1">
               <p className="font-semibold text-primary-foreground">Údaje z obchodního rejstříku:</p>
-              <p>Štefan Šulák</p>
+              <p>krovykv.cz s.r.o.</p>
               <p>IČO: 14262622</p>
-              <p>Místo podnikání: Vintířov 107, 357 35</p>
-              <p>Živnostenské oprávnění: Tesařství</p>
+              <p>DIČ: CZ14262622</p>
+              <p>Sídlo: Bezručova 1374/31, 360 01 Karlovy Vary</p>
+              <p>Spisová značka: C 42197/KSPL</p>
             </div>
           </div>
 
@@ -57,15 +58,15 @@ const Footer = () => {
                   +420 725 716 937
                 </a>
               </p>
-              <p>Vintířov 107, 357 35</p>
-              <p>Karlovarský kraj</p>
+              <p>Bezručova 1374/31</p>
+              <p>360 01 Karlovy Vary</p>
             </div>
           </div>
         </div>
 
         <div className="border-t border-primary-foreground/20 pt-6">
           <p className="text-primary-foreground/70 text-sm text-center">
-            © {currentYear} krovykv.cz – Štefan Šulák. Všechna práva vyhrazena.
+            © {currentYear} krovykv.cz s.r.o. Všechna práva vyhrazena.
           </p>
         </div>
       </div>
