@@ -11,7 +11,7 @@ const Footer = () => {
             <div className="text-primary-foreground/70 text-sm space-y-1">
               <p className="font-semibold text-primary-foreground">Údaje z obchodního rejstříku:</p>
               <p>Štefan Šulák</p>
-              <p>IČO: 22626697</p>
+              <p>IČO: 14262622</p>
               <p>Místo podnikání: Vintířov 107, 357 35</p>
               <p>Živnostenské oprávnění: Tesařství</p>
             </div>
