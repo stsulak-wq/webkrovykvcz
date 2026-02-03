@@ -1,23 +1,44 @@
 import { useState } from "react";
 import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const navLinks = [
-    { href: "#sluzby", label: "Služby" },
-    { href: "#o-nas", label: "O nás" },
-    { href: "#reference", label: "Reference" },
-    { href: "#kontakt", label: "Kontakt" },
+    { href: "#sluzby", label: "Služby", type: "scroll" },
+    { href: "/drevene-lodzie", label: "Dřevěné lodžie", type: "route" },
+    { href: "#o-nas", label: "O nás", type: "scroll" },
+    { href: "#reference", label: "Reference", type: "scroll" },
+    { href: "#kontakt", label: "Kontakt", type: "scroll" },
   ];
 
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+  const handleNavClick = (link: { href: string; label: string; type: string }) => {
+    if (link.type === "route") {
+      navigate(link.href);
+    } else {
+      // If not on home page, navigate there first
+      if (location.pathname !== "/") {
+        navigate("/" + link.href);
+      } else {
+        const element = document.querySelector(link.href);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }
     }
     setIsMenuOpen(false);
+  };
+
+  const handleLogoClick = () => {
+    if (location.pathname !== "/") {
+      navigate("/");
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
   };
 
   return (
@@ -25,19 +46,23 @@ const Header = () => {
       <div className="container-custom">
         <div className="flex items-center justify-between h-16 md:h-20 px-4">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2">
+          <button onClick={handleLogoClick} className="flex items-center gap-2">
             <span className="text-2xl md:text-3xl font-serif font-bold text-primary">
               KrovyKV
             </span>
-          </a>
+          </button>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <button
                 key={link.href}
-                onClick={() => scrollToSection(link.href)}
-                className="text-foreground/80 hover:text-primary transition-colors font-medium"
+                onClick={() => handleNavClick(link)}
+                className={`transition-colors font-medium ${
+                  link.type === "route" && location.pathname === link.href
+                    ? "text-primary"
+                    : "text-foreground/80 hover:text-primary"
+                }`}
               >
                 {link.label}
               </button>
@@ -69,8 +94,12 @@ const Header = () => {
               {navLinks.map((link) => (
                 <button
                   key={link.href}
-                  onClick={() => scrollToSection(link.href)}
-                  className="py-3 text-left text-foreground/80 hover:text-primary transition-colors font-medium"
+                  onClick={() => handleNavClick(link)}
+                  className={`py-3 text-left transition-colors font-medium ${
+                    link.type === "route" && location.pathname === link.href
+                      ? "text-primary"
+                      : "text-foreground/80 hover:text-primary"
+                  }`}
                 >
                   {link.label}
                 </button>
