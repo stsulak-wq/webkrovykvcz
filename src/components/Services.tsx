@@ -1,4 +1,4 @@
-import { Home, Hammer, TreePine, Building, DoorOpen } from "lucide-react";
+import { Home, Hammer, TreePine, DoorOpen } from "lucide-react";
 
 const services = [
   {
@@ -24,12 +24,6 @@ const services = [
     title: "Dřevěné lodžie",
     description:
       "Kvalitní dřevěné lodžie a balkónové konstrukce. Funkční a estetické řešení pro váš domov s důrazem na dlouhou životnost.",
-  },
-  {
-    icon: Building,
-    title: "Rekonstrukce střech",
-    description:
-      "Opravy a rekonstrukce stávajících střešních konstrukcí. Zajistíme bezpečný a funkční stav vaší střechy.",
   },
 ];
 
