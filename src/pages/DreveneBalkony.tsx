@@ -30,7 +30,7 @@ const processSteps = [
 ];
 
 const benefits = [
-  "Přírodní materiál s výbornou tepelnou izolací",
+  "Přírodní materiál s přirozenou krásou",
   "Estetický vzhled a útulná atmosféra",
   "Dlouhá životnost při správné údržbě",
   "Ekologické a udržitelné řešení",
