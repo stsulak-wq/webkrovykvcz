@@ -1,4 +1,4 @@
-import { Home, Hammer, TreePine, Building } from "lucide-react";
+import { Home, Hammer, TreePine, Building, DoorOpen } from "lucide-react";
 
 const services = [
   {
@@ -18,6 +18,12 @@ const services = [
     title: "Pergoly a přístřešky",
     description:
       "Elegantní dřevěné pergoly, altány a přístřešky, které zkrášlí vaši zahradu a poskytnou stín.",
+  },
+  {
+    icon: DoorOpen,
+    title: "Dřevěné lodžie",
+    description:
+      "Kvalitní dřevěné lodžie a balkónové konstrukce. Funkční a estetické řešení pro váš domov s důrazem na dlouhou životnost.",
   },
   {
     icon: Building,
