@@ -55,13 +55,40 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    try {
+      // Create FormData for submission
+      const formDataToSend = new FormData();
+      formDataToSend.append("name", formData.name.trim());
+      formDataToSend.append("email", formData.email.trim());
+      formDataToSend.append("phone", formData.phone.trim());
+      formDataToSend.append("message", formData.message.trim());
+      formDataToSend.append("_subject", `Nová zpráva z webu krovykv.cz od ${formData.name.trim()}`);
+      formDataToSend.append("_captcha", "false");
+      formDataToSend.append("_template", "table");
+      
+      // Add files as attachments (FormSubmit supports up to 5MB total)
+      files.forEach((file) => {
+        formDataToSend.append("attachment", file);
+      });
 
-    toast.success("Zpráva byla odeslána! Brzy se vám ozveme.");
-    setFormData({ name: "", email: "", phone: "", message: "" });
-    setFiles([]);
-    setIsSubmitting(false);
+      const response = await fetch("https://formsubmit.co/ajax/info@krovykv.cz", {
+        method: "POST",
+        body: formDataToSend,
+      });
+
+      if (response.ok) {
+        toast.success("Zpráva byla odeslána! Brzy se vám ozveme.");
+        setFormData({ name: "", email: "", phone: "", message: "" });
+        setFiles([]);
+      } else {
+        throw new Error("Chyba při odesílání");
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
+      toast.error("Nepodařilo se odeslat zprávu. Zkuste to prosím znovu nebo nás kontaktujte telefonicky.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
