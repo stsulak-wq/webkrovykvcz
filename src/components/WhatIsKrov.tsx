@@ -2,31 +2,55 @@ import { Info, CheckCircle, ArrowDown, Wind, Snowflake } from "lucide-react";
 
 const krovTypes = [
   {
-    title: "Krokvové krovy",
-    description: "Jednodušší konstrukce bez vazného trámu. Zpevnění krokví zajišťuje hambálek. Vhodné pro menší rozpětí střech.",
+    title: "Pultový krov",
+    description: "Nejjednodušší typ střechy s jednou skloněnou plochou. Vhodný pro přístavby, garáže nebo moderní domy.",
   },
   {
-    title: "Vázané krovy",
-    description: "Klasické krovy s vazným trámem jako hlavním nosníkem. Trámy jsou do sebe zasazovány do předem vytvořených zářezů.",
+    title: "Sedlový krov",
+    description: "Klasická střecha se dvěma protilehlými skloněnými plochami. Nejrozšířenější typ pro rodinné domy.",
   },
   {
-    title: "Hambálkové krovy",
-    description: "Liší se od vázaných krovů přeponou – hambálkem mezi krokvemi, který zajišťuje zpevnění a pochozí prostor pod ním.",
+    title: "Vaznicový krov",
+    description: "Krov s vodorovnými vaznicemi podpírajícími krokve. Umožňuje větší rozpětí bez mezilehlých podpor.",
+  },
+  {
+    title: "Vazný krov",
+    description: "Tradiční konstrukce s vazným trámem jako hlavním nosníkem. Trámy jsou do sebe zasazovány pomocí tesařských spojů.",
+  },
+  {
+    title: "Hambálkový krov",
+    description: "Krov s vodorovným hambálkem spojujícím protilehlé krokve. Ideální pro obytná podkroví s pochozím prostorem.",
   },
 ];
 
 const krovParts = [
   {
-    name: "Vazný trám",
-    description: "Hlavní nosník krovu, na kterém spočívají všechny ostatní prvky. Vodorovný prvek využívaný zejména u vázaných krovů.",
+    name: "Pozednice",
+    description: "Vodorovný trám uložený na zdivu, který přenáší zatížení z krokví do nosných stěn.",
+  },
+  {
+    name: "Vaznice",
+    description: "Vodorovný trám podpírající krokve v jejich délce. Může být hřebenová, střední nebo okapová.",
   },
   {
     name: "Krokev",
-    description: "Šikmý prvek krovu (střechy), na který se montují latě pro střešní krytinu.",
+    description: "Šikmý prvek krovu nesoucí střešní latě a krytinu. Základní nosný prvek střešní plochy.",
+  },
+  {
+    name: "Kleština",
+    description: "Vodorovný prvek spojující dvě protilehlé krokve v dolní části, zajišťuje tuhost konstrukce.",
   },
   {
     name: "Hambálek",
-    description: "Vodorovný trám spojující dvě protilehlé krokve ve výšce 200 cm a více, aby se pod ním dalo projít.",
+    description: "Vodorovný trám spojující krokve ve výšce min. 2 m, vytváří pochozí prostor v podkroví.",
+  },
+  {
+    name: "Vazný trám",
+    description: "Hlavní vodorovný nosník krovu spojující protilehlé stěny. Nese celou váhu krovové konstrukce.",
+  },
+  {
+    name: "Vzpěra / Pásek",
+    description: "Šikmý prvek zajišťující stabilitu krovu. Přenáší zatížení mezi jednotlivými částmi konstrukce.",
   },
 ];
 
@@ -54,48 +78,43 @@ const WhatIsKrov = () => {
           <h3 className="text-2xl font-serif font-bold text-foreground mb-6 text-center">
             Typy krovů, které vyrábíme a montujeme
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
             {krovTypes.map((type, index) => (
               <div
                 key={index}
-                className="bg-card p-6 rounded-lg border border-border"
+                className="bg-card p-5 rounded-lg border border-border"
               >
-                <h4 className="text-xl font-semibold text-foreground mb-3">
+                <h4 className="text-lg font-semibold text-foreground mb-2">
                   {type.title}
                 </h4>
-                <p className="text-muted-foreground">{type.description}</p>
+                <p className="text-muted-foreground text-sm">{type.description}</p>
               </div>
             ))}
           </div>
-          <p className="text-center text-muted-foreground mt-6 max-w-3xl mx-auto">
-            Klasické vázané, hambálkové i krokvové krovy umožňují maximální využití 
-            půdního prostoru pro podkroví a mají vyšší estetickou hodnotu než vazníky. 
-            Jsou tak vhodné zejména pro rodinné domy.
-          </p>
+        </div>
+
+        {/* Parts of roof */}
+        <div className="mb-16">
+          <h3 className="text-2xl font-serif font-bold text-foreground mb-6 text-center">
+            Základní části krovu
+          </h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            {krovParts.map((part, index) => (
+              <div
+                key={index}
+                className="bg-card p-5 rounded-lg border border-border"
+              >
+                <h4 className="text-lg font-semibold text-primary mb-2">
+                  {part.name}
+                </h4>
+                <p className="text-muted-foreground text-sm">{part.description}</p>
+              </div>
+            ))}
+          </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-16">
-          {/* Left column - Parts */}
-          <div>
-            <h3 className="text-2xl font-serif font-bold text-foreground mb-6">
-              Základní části krovu
-            </h3>
-            <div className="space-y-4">
-              {krovParts.map((part, index) => (
-                <div
-                  key={index}
-                  className="bg-card p-5 rounded-lg border border-border"
-                >
-                  <h4 className="text-lg font-semibold text-primary mb-2">
-                    {part.name}
-                  </h4>
-                  <p className="text-muted-foreground text-sm">{part.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Right column - Slope info */}
+          {/* Left column - Slope info */}
           <div>
             <h3 className="text-2xl font-serif font-bold text-foreground mb-6">
               Šikmost střechy – co je dobré vědět
@@ -133,15 +152,23 @@ const WhatIsKrov = () => {
                 </div>
               </div>
             </div>
+          </div>
 
-            <div className="bg-primary/5 border border-primary/20 rounded-lg p-6 mt-6">
-              <h4 className="font-semibold text-foreground mb-2">
-                💡 Tip od odborníků
-              </h4>
-              <p className="text-muted-foreground text-sm">
+          {/* Right column - Expert tip */}
+          <div>
+            <h3 className="text-2xl font-serif font-bold text-foreground mb-6">
+              Tip od odborníků
+            </h3>
+            <div className="bg-primary/5 border border-primary/20 rounded-lg p-6">
+              <p className="text-muted-foreground leading-relaxed mb-4">
                 Pokud si přejete mít půdu obyvatelnou či pochozí, doporučujeme 
-                <strong> hambálkové krovy</strong> místo vázaných krovů. Hambálek zajišťuje 
+                <strong className="text-foreground"> hambálkové krovy</strong>. Hambálek zajišťuje 
                 zpevnění celého krovu a zároveň vytváří pochozí prostor pod ním.
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                Klasické vázané, hambálkové i krokvové krovy umožňují maximální využití 
+                půdního prostoru pro podkroví a mají vyšší estetickou hodnotu než vazníky. 
+                Jsou tak vhodné zejména pro rodinné domy.
               </p>
             </div>
           </div>
