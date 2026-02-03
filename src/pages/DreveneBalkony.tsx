@@ -23,7 +23,7 @@ const processSteps = [
   {
     icon: Paintbrush,
     title: "4. Povrchová úprava a dokončení",
-    description: "Aplikujeme kvalitní lazury a nátěry pro dlouhou životnost. Předáme vám hotovou lodžii připravenou k okamžitému užívání.",
+    description: "Aplikujeme kvalitní lazury a nátěry pro dlouhou životnost. Předáme vám hotový balkón připravený k okamžitému užívání.",
   },
 ];
 
@@ -36,7 +36,7 @@ const benefits = [
   "Zvýšení hodnoty nemovitosti",
 ];
 
-const DreveneLodzie = () => {
+const DreveneBalkony = () => {
   const navigate = useNavigate();
 
   const scrollToContact = () => {
@@ -58,10 +58,10 @@ const DreveneLodzie = () => {
           <div className="container-custom px-4">
             <div className="max-w-4xl mx-auto text-center">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-foreground mb-6">
-                Dřevěné lodžie
+                Dřevěné balkony
               </h1>
               <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-                Kvalitní dřevěné lodžie a balkónové konstrukce na míru. 
+                Kvalitní dřevěné balkony a balkónové konstrukce na míru. 
                 Spojujeme tradiční tesařské řemeslo s moderními požadavky na bydlení.
               </p>
               <Button size="xl" className="group" onClick={scrollToContact}>
@@ -72,31 +72,31 @@ const DreveneLodzie = () => {
           </div>
         </section>
 
-        {/* What is Lodzie */}
+        {/* What is Balkon */}
         <section className="section-padding bg-background">
           <div className="container-custom px-4">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
                 <h2 className="text-3xl md:text-4xl font-serif font-bold text-foreground mb-6">
-                  Co je dřevěná lodžie?
+                  Co je dřevěný balkón?
                 </h2>
                 <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                  Dřevěná lodžie je zastřešený balkón nebo terasa s dřevěnou nosnou konstrukcí, 
-                  která je integrovaná do fasády budovy. Na rozdíl od klasického balkónu je lodžie 
-                  zapuštěná do objemu stavby a poskytuje tak lepší ochranu před povětrnostními vlivy.
+                  Dřevěný balkón je venkovní konstrukce vyčnívající z fasády budovy, 
+                  která rozšiřuje obytný prostor o příjemné místo na čerstvém vzduchu. 
+                  Dřevo jako materiál dodává balkónu přirozenou krásu a teplo.
                 </p>
                 <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                  Dřevěné lodžie kombinují přírodní krásu dřeva s funkčností moderního bydlení. 
-                  Vytváří útulný venkovní prostor, který lze využívat téměř celoročně.
+                  Dřevěné balkony kombinují přírodní estetiku s funkčností moderního bydlení. 
+                  Vytváří útulný venkovní prostor pro relaxaci, snídani nebo posezení s rodinou.
                 </p>
                 <p className="text-lg text-muted-foreground leading-relaxed">
                   Nabízíme kompletní servis od návrhu přes výrobu až po montáž. 
-                  Každá naše lodžie je vyrobena přesně na míru vašemu domu a vašim potřebám.
+                  Každý náš balkón je vyroben přesně na míru vašemu domu a vašim potřebám.
                 </p>
               </div>
               <div className="bg-secondary rounded-xl p-8">
                 <h3 className="text-xl font-serif font-bold text-foreground mb-6">
-                  Výhody dřevěných lodžií
+                  Výhody dřevěných balkónů
                 </h3>
                 <ul className="space-y-4">
                   {benefits.map((benefit, index) => (
@@ -121,7 +121,7 @@ const DreveneLodzie = () => {
                 Jak probíhá realizace?
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Od prvního kontaktu po předání hotové lodžie vás provedeme celým procesem.
+                Od prvního kontaktu po předání hotového balkónu vás provedeme celým procesem.
               </p>
             </div>
 
@@ -185,7 +185,7 @@ const DreveneLodzie = () => {
           <div className="container-custom px-4">
             <div className="max-w-3xl mx-auto text-center">
               <h2 className="text-3xl md:text-4xl font-serif font-bold text-primary-foreground mb-6">
-                Máte zájem o dřevěnou lodžii?
+                Máte zájem o dřevěný balkón?
               </h2>
               <p className="text-lg text-primary-foreground/90 mb-8">
                 Kontaktujte nás pro nezávaznou konzultaci. Rádi vás navštívíme, 
@@ -209,4 +209,4 @@ const DreveneLodzie = () => {
   );
 };
 
-export default DreveneLodzie;
+export default DreveneBalkony;
