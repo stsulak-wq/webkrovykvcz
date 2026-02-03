@@ -1,24 +1,24 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Check, MessageSquare, FileText, Lightbulb, Search, Droplets, Camera, Thermometer, Ruler } from "lucide-react";
+import { ArrowRight, Check, Search, Droplets, FileText, Ruler } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const consultationTypes = [
   {
-    icon: Lightbulb,
-    title: "Poradenství před stavbou",
-    description: "Pomůžeme vám s výběrem typu krovu, materiálů a technického řešení ještě před zahájením stavby.",
+    icon: Search,
+    title: "Prohlídka a zhodnocení krovu",
+    description: "Vizuální prohlídka stávající konstrukce, zjištění stavu trámů a návrh případné opravy z pohledu tesaře.",
   },
   {
     icon: FileText,
-    title: "Posouzení projektové dokumentace",
-    description: "Zkontrolujeme vaši projektovou dokumentaci a upozorníme na případné nedostatky nebo možnosti optimalizace.",
+    title: "Zápis z prohlídky",
+    description: "Písemný zápis z prohlídky s popisem zjištěného stavu, fotodokumentací a doporučením dalšího postupu.",
   },
   {
-    icon: Search,
-    title: "Diagnostika a revize krovů",
-    description: "Odborné řemeslné zhodnocení stávajícího krovu před rekonstrukcí. Technická zpráva o stavu konstrukce s návrhem řešení.",
+    icon: Ruler,
+    title: "Cenová nabídka na opravu",
+    description: "Na základě prohlídky připravíme orientační cenovou nabídku na tesařské práce potřebné k opravě.",
   },
 ];
 
@@ -26,32 +26,31 @@ const diagnostikaFeatures = [
   {
     icon: Search,
     title: "Vizuální prohlídka",
-    description: "Odhalení viditelných vad, poškození a problematických míst konstrukce.",
+    description: "Odhalení viditelných vad – shnilé trámy, praskliny, deformace, napadení dřevokazným hmyzem.",
   },
   {
     icon: Droplets,
-    title: "Sondy do dřeva",
-    description: "Měření vlhkosti a zjištění hloubkové degradace, dutin či napadení dřevokazným hmyzem.",
+    title: "Měření vlhkosti dřeva",
+    description: "Pomocí vlhkoměru zjistíme aktuální stav vlhkosti a riziko dalšího poškození.",
   },
   {
     icon: Ruler,
-    title: "Návrh řešení a odhad nákladů",
-    description: "Konkrétní doporučení pro opravu včetně orientačního odhadu nákladů na realizaci.",
+    title: "Návrh rozsahu opravy",
+    description: "Určíme, které prvky je třeba vyměnit nebo opravit, a navrhneme postup realizace.",
   },
   {
     icon: FileText,
-    title: "Pasportizace",
-    description: "Zaměření skutečného stavu konstrukce, pokud k domu chybí původní plány.",
+    title: "Zaměření skutečného stavu",
+    description: "Pokud k domu chybí plány, zaměříme rozměry konstrukce pro účely plánované opravy.",
   },
 ];
 
 const benefits = [
-  "Nezávislý odborný pohled na váš projekt",
-  "Úspora nákladů díky včasné optimalizaci",
-  "Prevence chyb a problémů při realizaci",
-  "Zkušenosti z desítek realizovaných projektů",
-  "Srozumitelné vysvětlení technických detailů",
-  "Písemná technická zpráva o stavu konstrukce",
+  "Pohled zkušeného tesaře na váš krov",
+  "Zjištění skutečného stavu před rekonstrukcí",
+  "Orientační odhad nákladů na opravu",
+  "Písemný zápis z prohlídky s fotodokumentací",
+  "Srozumitelné vysvětlení bez zbytečného žargonu",
 ];
 
 const TesarskaKonzultace = () => {
@@ -79,8 +78,8 @@ const TesarskaKonzultace = () => {
                 Tesařská konzultace
               </h1>
               <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-                Potřebujete odbornou radu? Nabízíme tesařské konzultace pro ty, 
-                kdo chtějí mít jistotu, že jejich projekt je v dobrých rukou.
+                Potřebujete zhodnotit stav krovu před rekonstrukcí? Jako tesaři vám můžeme 
+                poskytnout řemeslný pohled na vaši střešní konstrukci a navrhnout opravu.
               </p>
               <Button size="xl" className="group" onClick={scrollToContact}>
                 Domluvit konzultaci
@@ -95,10 +94,10 @@ const TesarskaKonzultace = () => {
           <div className="container-custom px-4">
             <div className="text-center mb-12 md:mb-16">
               <h2 className="text-3xl md:text-4xl font-serif font-bold text-foreground mb-4">
-                Co vám můžeme nabídnout?
+                Co vám jako tesaři můžeme nabídnout?
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Naše zkušenosti jsou k dispozici i těm, kdo nepotřebují kompletní realizaci.
+                V rámci tesařské živnosti provádíme prohlídky krovů pro účely opravy nebo plánované rekonstrukce.
               </p>
             </div>
 
@@ -129,11 +128,11 @@ const TesarskaKonzultace = () => {
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-12">
                 <h2 className="text-3xl md:text-4xl font-serif font-bold text-foreground mb-4">
-                  Odborná diagnostika a revize krovů
+                  Jak prohlídka probíhá?
                 </h2>
                 <p className="text-lg text-muted-foreground">
-                  Plánujete rekonstrukci nebo máte podezření na poškození krovu? 
-                  Provedeme odborné řemeslné zhodnocení a vypracujeme technickou zprávu o stavu konstrukce.
+                  Přijedeme na stavbu, prohlédneme krov a zjistíme, které trámy jsou poškozené, 
+                  shnilé nebo napadené tesaříkem. Na základě prohlídky navrhneme rozsah opravy.
                 </p>
               </div>
 
@@ -163,14 +162,14 @@ const TesarskaKonzultace = () => {
                   Co získáte?
                 </h3>
                 <p className="text-muted-foreground mb-6 leading-relaxed">
-                  Po prohlídce obdržíte <strong>písemnou technickou zprávu o stavu konstrukce</strong> s dokumentací 
-                  zjištěných vad, fotodokumentací a konkrétním návrhem řešení včetně orientačního odhadu nákladů na opravu.
+                  Po prohlídce obdržíte <strong>zápis z prohlídky</strong> s popisem zjištěného stavu, 
+                  fotodokumentací a návrhem rozsahu opravy včetně orientační cenové nabídky na tesařské práce.
                 </p>
                 <div className="bg-card rounded-lg p-6 border border-border">
                   <p className="text-sm text-muted-foreground italic">
-                    <strong>Poznámka:</strong> Jedná se o odborné řemeslné zhodnocení v rámci tesařské živnosti. 
-                    Pro účely stavebního řízení nebo bankovních institucí může být vyžadován statický posudek 
-                    od autorizovaného inženýra – v takovém případě vás rádi odkážeme na spolupracující odborníky.
+                    <strong>Důležité:</strong> Jedná se o řemeslné zhodnocení v rámci tesařské živnosti – 
+                    odborný názor tesaře na stav konstrukce. Pro účely stavebního řízení nebo bankovních 
+                    institucí může být vyžadován statický posudek od autorizovaného inženýra.
                   </p>
                 </div>
               </div>
