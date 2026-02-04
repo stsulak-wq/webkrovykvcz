@@ -2,8 +2,8 @@ import { Info, CheckCircle, ArrowDown, Wind, Snowflake } from "lucide-react";
 
 const krovTypes = [
   {
-    title: "Pultový krov",
-    description: "Nejjednodušší typ střechy s jednou skloněnou plochou. Vhodný pro přístavby, garáže nebo moderní domy.",
+    title: "Valbový krov",
+    description: "Střecha se čtyřmi skloněnými plochami. Elegantní řešení s lepší odolností proti větru a dešti.",
   },
   {
     title: "Sedlový krov",
