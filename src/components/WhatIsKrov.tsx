@@ -52,6 +52,10 @@ const krovParts = [
     name: "Vzpěra / Pásek",
     description: "Šikmý prvek zajišťující stabilitu krovu. Přenáší zatížení mezi jednotlivými částmi konstrukce.",
   },
+  {
+    name: "Nároží / Úžlabí",
+    description: "Šikmé krokve v místě styku střešních ploch. Nárožní krokev vede po vnějším rohu, úžlabní po vnitřním.",
+  },
 ];
 
 const WhatIsKrov = () => {
