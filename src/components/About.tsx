@@ -88,10 +88,10 @@ const About = () => {
               </h3>
               <p className="text-primary font-semibold mb-4">Jednatel a tesař</p>
               <p className="text-muted-foreground leading-relaxed mb-6">
-                „Tesařina není jen práce – je to způsob života, který mi předali 
-                můj otec a dědeček. Se dřevem pracuji již od svých 14 let a každý den 
-                vstávám s vědomím, že pokračuji v tradici naší rodiny. 
-                Mým posláním je vytvářet konstrukce, které budou sloužit dalším generacím."
+                „Tesařina je řemeslo, které naše rodina předává už čtyři generace. 
+                Se dřevem pracuji od svých 14 let a za tu dobu jsem se naučil, 
+                že kvalitní konstrukce vyžaduje zkušenost, preciznost a respekt k materiálu. 
+                Naším cílem je vytvářet díla, která budou sloužit dalším generacím."
               </p>
               <div className="flex flex-wrap gap-6 justify-center md:justify-start">
                 <div className="flex items-center gap-2">
