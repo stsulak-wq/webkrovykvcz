@@ -63,6 +63,18 @@ import garaz4 from "@/assets/doubi-garaz/garaz-4.jpg";
 import garaz5 from "@/assets/doubi-garaz/garaz-5.jpg";
 import garaz6 from "@/assets/doubi-garaz/garaz-6.jpg";
 
+// Drahovice vila gallery images
+import vila1 from "@/assets/drahovice-vila/vila-1.jpg";
+import vila2 from "@/assets/drahovice-vila/vila-2.jpg";
+import vila3 from "@/assets/drahovice-vila/vila-3.jpg";
+import vila4 from "@/assets/drahovice-vila/vila-4.jpg";
+import vila5 from "@/assets/drahovice-vila/vila-5.jpg";
+import vila6 from "@/assets/drahovice-vila/vila-6.jpg";
+import vila7 from "@/assets/drahovice-vila/vila-7.jpg";
+import vila8 from "@/assets/drahovice-vila/vila-8.jpg";
+import vila9 from "@/assets/drahovice-vila/vila-9.jpg";
+import vila10 from "@/assets/drahovice-vila/vila-10.jpg";
+
 const otoviceImages = [
   { src: otovice1, alt: "Krov bytového domu Otovice - pohled 1" },
   { src: otovice2, alt: "Krov bytového domu Otovice - pohled 2" },
@@ -123,6 +135,19 @@ const doubiGarazImages = [
   { src: garaz6, alt: "Garážové stání Doubí - pohled 6" },
 ];
 
+const drahoviceVilaImages = [
+  { src: vila1, alt: "Krov bytové vily Drahovice - pohled 1" },
+  { src: vila2, alt: "Krov bytové vily Drahovice - pohled 2" },
+  { src: vila3, alt: "Krov bytové vily Drahovice - detail konstrukce" },
+  { src: vila4, alt: "Krov bytové vily Drahovice - pohled 4" },
+  { src: vila5, alt: "Krov bytové vily Drahovice - detail" },
+  { src: vila6, alt: "Krov bytové vily Drahovice - interiér" },
+  { src: vila7, alt: "Krov bytové vily Drahovice - volská oka interiér" },
+  { src: vila8, alt: "Krov bytové vily Drahovice - volská oka detail" },
+  { src: vila9, alt: "Krov bytové vily Drahovice - OSB desky" },
+  { src: vila10, alt: "Krov bytové vily Drahovice - dokončení" },
+];
+
 const projects = [
   {
     image: otovice2,
@@ -171,6 +196,14 @@ const projects = [
     description: "Dřevěný přístřešek pro parkování.",
     isGallery: true,
     galleryImages: doubiGarazImages,
+  },
+  {
+    image: vila9,
+    title: "Krov pro bytovou vilu",
+    location: "Drahovice, Karlovy Vary",
+    description: "Výroba a montáž krovu, konstrukce volských ok s pobitím OSB deskami.",
+    isGallery: true,
+    galleryImages: drahoviceVilaImages,
   },
 ];
 
