@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ArrowRight, Images } from "lucide-react";
+import { ArrowRight, Images, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import {
@@ -9,6 +9,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 
 // Balkony gallery images
 import balkon1 from "@/assets/balkony/balkon-1.jpg";
@@ -224,50 +225,53 @@ const References = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
-          {projects.map((project, index) => (
-            <div
-              key={index}
-              className={`group bg-card rounded-lg overflow-hidden border border-border card-hover ${
-                project.isGallery ? "cursor-pointer" : ""
-              }`}
-              onClick={() => project.isGallery && setSelectedProject(project)}
-            >
-              <div className="aspect-square overflow-hidden relative">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                {project.isGallery && (
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center">
-                    <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center gap-2 text-white font-medium">
-                      <Images className="w-5 h-5" />
-                      <span>Zobrazit galerii</span>
+        <ScrollArea className="w-full whitespace-nowrap">
+          <div className="flex gap-6 pb-4">
+            {projects.map((project, index) => (
+              <div
+                key={index}
+                className={`group bg-card rounded-lg overflow-hidden border border-border card-hover flex-shrink-0 w-[300px] md:w-[350px] ${
+                  project.isGallery ? "cursor-pointer" : ""
+                }`}
+                onClick={() => project.isGallery && setSelectedProject(project)}
+              >
+                <div className="aspect-[4/3] overflow-hidden relative">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  {project.isGallery && (
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center">
+                      <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center gap-2 text-white font-medium">
+                        <Images className="w-5 h-5" />
+                        <span>Zobrazit galerii</span>
+                      </div>
                     </div>
-                  </div>
-                )}
-              </div>
-              <div className="p-6">
-                <p className="text-sm text-accent font-medium mb-1">
-                  {project.location}
-                </p>
-                <h3 className="text-xl font-serif font-semibold text-foreground mb-2">
-                  {project.title}
-                </h3>
-                <p className="text-muted-foreground">
-                  {project.description}
-                </p>
-                {project.isGallery && (
-                  <p className="text-sm text-primary mt-2 flex items-center gap-1">
-                    <Images className="w-4 h-4" />
-                    {project.galleryImages?.length} fotografií
+                  )}
+                </div>
+                <div className="p-5 whitespace-normal">
+                  <p className="text-sm text-accent font-medium mb-1">
+                    {project.location}
                   </p>
-                )}
+                  <h3 className="text-lg font-serif font-semibold text-foreground mb-2">
+                    {project.title}
+                  </h3>
+                  <p className="text-muted-foreground text-sm line-clamp-2">
+                    {project.description}
+                  </p>
+                  {project.isGallery && (
+                    <p className="text-sm text-primary mt-2 flex items-center gap-1">
+                      <Images className="w-4 h-4" />
+                      {project.galleryImages?.length} fotografií
+                    </p>
+                  )}
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+          <ScrollBar orientation="horizontal" className="h-2" />
+        </ScrollArea>
 
         {/* Gallery Dialog */}
         <Dialog open={!!selectedProject} onOpenChange={() => setSelectedProject(null)}>
