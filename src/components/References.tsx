@@ -10,7 +10,6 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
-import refPergola from "@/assets/ref-pergola.jpg";
 import refPristresek from "@/assets/ref-pristresek.jpg";
 
 // Otovice gallery images
@@ -28,6 +27,15 @@ import olsovaVrata3 from "@/assets/olsova-vrata/olsova-vrata-3.jpg";
 import olsovaVrata4 from "@/assets/olsova-vrata/olsova-vrata-4.jpg";
 import olsovaVrata5 from "@/assets/olsova-vrata/olsova-vrata-5.jpg";
 
+// Hájek Pergola gallery images
+import pergola1 from "@/assets/hajek-pergola/pergola-1.jpg";
+import pergola2 from "@/assets/hajek-pergola/pergola-2.jpg";
+import pergola3 from "@/assets/hajek-pergola/pergola-3.jpg";
+import pergola4 from "@/assets/hajek-pergola/pergola-4.jpg";
+import pergola5 from "@/assets/hajek-pergola/pergola-5.jpg";
+import pergola6 from "@/assets/hajek-pergola/pergola-6.jpg";
+import pergola7 from "@/assets/hajek-pergola/pergola-7.jpg";
+
 const otoviceImages = [
   { src: otovice1, alt: "Krov bytového domu Otovice - pohled 1" },
   { src: otovice2, alt: "Krov bytového domu Otovice - pohled 2" },
@@ -43,6 +51,16 @@ const olsovaVrataImages = [
   { src: olsovaVrata3, alt: "Krov pro RD Olšová Vrata - pohled 3" },
   { src: olsovaVrata4, alt: "Krov pro RD Olšová Vrata - pohled 4" },
   { src: olsovaVrata5, alt: "Krov pro RD Olšová Vrata - pohled 5" },
+];
+
+const hajekPergolaImages = [
+  { src: pergola1, alt: "Pergola Hájek - pohled 1" },
+  { src: pergola2, alt: "Pergola Hájek - detail konstrukce" },
+  { src: pergola3, alt: "Pergola Hájek - pohled 3" },
+  { src: pergola4, alt: "Pergola Hájek - pohled 4" },
+  { src: pergola5, alt: "Pergola Hájek - pohled 5" },
+  { src: pergola6, alt: "Pergola Hájek - příprava trámů" },
+  { src: pergola7, alt: "Pergola Hájek - trámy" },
 ];
 
 const projects = [
@@ -63,10 +81,12 @@ const projects = [
     galleryImages: olsovaVrataImages,
   },
   {
-    image: refPergola,
-    title: "Zahradní pergola",
-    location: "Mariánské Lázně",
-    description: "Elegantní dřevěná pergola s posezením pro celou rodinu.",
+    image: pergola1,
+    title: "Pergola",
+    location: "Hájek u Karlových Varů",
+    description: "Částečně viditelné prvky a konstrukční část připravená na obložení.",
+    isGallery: true,
+    galleryImages: hajekPergolaImages,
   },
   {
     image: refPristresek,
