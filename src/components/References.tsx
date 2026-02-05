@@ -1,16 +1,43 @@
-import { ArrowRight } from "lucide-react";
+import { useState } from "react";
+import { ArrowRight, Images } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+
 import refPergola from "@/assets/ref-pergola.jpg";
-import refKrov from "@/assets/ref-krov.jpg";
 import refPristresek from "@/assets/ref-pristresek.jpg";
+
+// Otovice gallery images
+import otovice1 from "@/assets/otovice/otovice-1.jpg";
+import otovice2 from "@/assets/otovice/otovice-2.jpg";
+import otovice3 from "@/assets/otovice/otovice-3.jpg";
+import otovice4 from "@/assets/otovice/otovice-4.jpg";
+import otovice5 from "@/assets/otovice/otovice-5.jpg";
+import otovice6 from "@/assets/otovice/otovice-6.jpg";
+
+const otoviceImages = [
+  { src: otovice1, alt: "Krov bytového domu Otovice - pohled 1" },
+  { src: otovice2, alt: "Krov bytového domu Otovice - pohled 2" },
+  { src: otovice3, alt: "Krov bytového domu Otovice - pohled 3" },
+  { src: otovice4, alt: "Krov bytového domu Otovice - pohled 4" },
+  { src: otovice5, alt: "Krov bytového domu Otovice - pohled 5" },
+  { src: otovice6, alt: "Krov bytového domu Otovice - pohled 6" },
+];
 
 const projects = [
   {
-    image: refKrov,
+    image: otovice2,
     title: "Krov bytového domu Otovice",
     location: "Karlovy Vary",
     description: "Kompletní realizace krovu pro celý objekt.",
     isGallery: true,
+    galleryImages: otoviceImages,
   },
   {
     image: refPergola,
@@ -27,6 +54,9 @@ const projects = [
 ];
 
 const References = () => {
+  const [galleryOpen, setGalleryOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
   return (
     <section id="reference" className="section-padding bg-secondary">
       <div className="container-custom">
@@ -44,14 +74,25 @@ const References = () => {
           {projects.map((project, index) => (
             <div
               key={index}
-              className="group bg-card rounded-lg overflow-hidden border border-border card-hover"
+              className={`group bg-card rounded-lg overflow-hidden border border-border card-hover ${
+                project.isGallery ? "cursor-pointer" : ""
+              }`}
+              onClick={() => project.isGallery && setGalleryOpen(true)}
             >
-              <div className="aspect-square overflow-hidden">
+              <div className="aspect-square overflow-hidden relative">
                 <img
                   src={project.image}
                   alt={project.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
+                {project.isGallery && (
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center">
+                    <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center gap-2 text-white font-medium">
+                      <Images className="w-5 h-5" />
+                      <span>Zobrazit galerii</span>
+                    </div>
+                  </div>
+                )}
               </div>
               <div className="p-6">
                 <p className="text-sm text-accent font-medium mb-1">
@@ -63,10 +104,78 @@ const References = () => {
                 <p className="text-muted-foreground">
                   {project.description}
                 </p>
+                {project.isGallery && (
+                  <p className="text-sm text-primary mt-2 flex items-center gap-1">
+                    <Images className="w-4 h-4" />
+                    {project.galleryImages?.length} fotografií
+                  </p>
+                )}
               </div>
             </div>
           ))}
         </div>
+
+        {/* Gallery Dialog */}
+        <Dialog open={galleryOpen} onOpenChange={setGalleryOpen}>
+          <DialogContent className="max-w-5xl p-0 bg-card border-border">
+            <div className="p-6 pb-0">
+              <h3 className="text-2xl font-serif font-bold text-foreground">
+                Krov bytového domu Otovice
+              </h3>
+              <p className="text-muted-foreground">Karlovy Vary</p>
+            </div>
+            <div className="p-6">
+              <div className="px-12">
+                <Carousel
+                  opts={{
+                    align: "start",
+                    loop: true,
+                  }}
+                  className="w-full"
+                >
+                  <CarouselContent className="-ml-2 md:-ml-4">
+                    {otoviceImages.map((image, index) => (
+                      <CarouselItem
+                        key={index}
+                        className="pl-2 md:pl-4 basis-full sm:basis-1/2"
+                      >
+                        <div
+                          className="aspect-[4/3] overflow-hidden rounded-lg cursor-pointer group"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setSelectedImage(image.src);
+                          }}
+                        >
+                          <img
+                            src={image.src}
+                            alt={image.alt}
+                            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                            loading="lazy"
+                          />
+                        </div>
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                  <CarouselPrevious className="left-0" />
+                  <CarouselNext className="right-0" />
+                </Carousel>
+              </div>
+            </div>
+          </DialogContent>
+        </Dialog>
+
+        {/* Full image Dialog */}
+        <Dialog open={!!selectedImage} onOpenChange={() => setSelectedImage(null)}>
+          <DialogContent className="max-w-4xl p-0 bg-transparent border-none">
+            {selectedImage && (
+              <img
+                src={selectedImage}
+                alt="Detail"
+                className="w-full h-auto rounded-lg"
+              />
+            )}
+          </DialogContent>
+        </Dialog>
 
         {/* CTA */}
         <div className="text-center mt-12">
