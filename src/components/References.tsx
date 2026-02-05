@@ -7,9 +7,10 @@ import refPristresek from "@/assets/ref-pristresek.jpg";
 const projects = [
   {
     image: refKrov,
-    title: "Krov rodinného domu",
+    title: "Krov bytového domu Otovice",
     location: "Karlovy Vary",
-    description: "Kompletní realizace střešní konstrukce včetně zateplení.",
+    description: "Kompletní realizace krovu pro celý objekt.",
+    isGallery: true,
   },
   {
     image: refPergola,
