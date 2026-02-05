@@ -10,8 +10,17 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
-import refPristresek from "@/assets/ref-pristresek.jpg";
-
+// Balkony gallery images
+import balkon1 from "@/assets/balkony/balkon-1.jpg";
+import balkon2 from "@/assets/balkony/balkon-2.jpg";
+import balkon3 from "@/assets/balkony/balkon-3.jpg";
+import balkon4 from "@/assets/balkony/balkon-4.jpg";
+import balkon5 from "@/assets/balkony/balkon-5.jpg";
+import balkon6 from "@/assets/balkony/balkon-6.jpg";
+import balkon7 from "@/assets/balkony/balkon-7.jpg";
+import balkon8 from "@/assets/balkony/balkon-8.jpg";
+import balkon9 from "@/assets/balkony/balkon-9.jpg";
+import balkon10 from "@/assets/balkony/balkon-10.jpg";
 // Otovice gallery images
 import otovice1 from "@/assets/otovice/otovice-1.jpg";
 import otovice2 from "@/assets/otovice/otovice-2.jpg";
@@ -63,6 +72,19 @@ const hajekPergolaImages = [
   { src: pergola7, alt: "Pergola Hájek - trámy" },
 ];
 
+const balkonyImages = [
+  { src: balkon1, alt: "Dřevěné balkony Gelsenkirchen - pohled 1" },
+  { src: balkon2, alt: "Dřevěné balkony Gelsenkirchen - pohled 2" },
+  { src: balkon3, alt: "Dřevěné balkony Gelsenkirchen - pohled 3" },
+  { src: balkon4, alt: "Dřevěné balkony Gelsenkirchen - pohled 4" },
+  { src: balkon5, alt: "Dřevěné balkony Gelsenkirchen - pohled 5" },
+  { src: balkon6, alt: "Dřevěné balkony Gelsenkirchen - pohled 6" },
+  { src: balkon7, alt: "Dřevěné balkony Gelsenkirchen - pohled 7" },
+  { src: balkon8, alt: "Dřevěné balkony Gelsenkirchen - pohled 8" },
+  { src: balkon9, alt: "Dřevěné balkony Gelsenkirchen - pohled 9" },
+  { src: balkon10, alt: "Dřevěné balkony Gelsenkirchen - pohled 10" },
+];
+
 const projects = [
   {
     image: otovice2,
@@ -89,10 +111,12 @@ const projects = [
     galleryImages: hajekPergolaImages,
   },
   {
-    image: refPristresek,
-    title: "Přístřešek pro auto",
-    location: "Sokolov",
-    description: "Moderní dřevěný přístřešek s kvalitní povrchovou úpravou.",
+    image: balkon1,
+    title: "Výroba a montáž balkonů",
+    location: "Gelsenkirchen, Porýní - Německo",
+    description: "Balkonový komplex do vnitrobloku pro bytový dům.",
+    isGallery: true,
+    galleryImages: balkonyImages,
   },
 ];
 
