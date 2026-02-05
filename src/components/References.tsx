@@ -21,6 +21,13 @@ import otovice4 from "@/assets/otovice/otovice-4.jpg";
 import otovice5 from "@/assets/otovice/otovice-5.jpg";
 import otovice6 from "@/assets/otovice/otovice-6.jpg";
 
+// Olšová Vrata gallery images
+import olsovaVrata1 from "@/assets/olsova-vrata/olsova-vrata-1.jpg";
+import olsovaVrata2 from "@/assets/olsova-vrata/olsova-vrata-2.jpg";
+import olsovaVrata3 from "@/assets/olsova-vrata/olsova-vrata-3.jpg";
+import olsovaVrata4 from "@/assets/olsova-vrata/olsova-vrata-4.jpg";
+import olsovaVrata5 from "@/assets/olsova-vrata/olsova-vrata-5.jpg";
+
 const otoviceImages = [
   { src: otovice1, alt: "Krov bytového domu Otovice - pohled 1" },
   { src: otovice2, alt: "Krov bytového domu Otovice - pohled 2" },
@@ -28,6 +35,14 @@ const otoviceImages = [
   { src: otovice4, alt: "Krov bytového domu Otovice - pohled 4" },
   { src: otovice5, alt: "Krov bytového domu Otovice - pohled 5" },
   { src: otovice6, alt: "Krov bytového domu Otovice - pohled 6" },
+];
+
+const olsovaVrataImages = [
+  { src: olsovaVrata1, alt: "Krov pro RD Olšová Vrata - pohled 1" },
+  { src: olsovaVrata2, alt: "Krov pro RD Olšová Vrata - pohled 2" },
+  { src: olsovaVrata3, alt: "Krov pro RD Olšová Vrata - pohled 3" },
+  { src: olsovaVrata4, alt: "Krov pro RD Olšová Vrata - pohled 4" },
+  { src: olsovaVrata5, alt: "Krov pro RD Olšová Vrata - pohled 5" },
 ];
 
 const projects = [
@@ -38,6 +53,14 @@ const projects = [
     description: "Kompletní realizace krovu pro celý objekt.",
     isGallery: true,
     galleryImages: otoviceImages,
+  },
+  {
+    image: olsovaVrata3,
+    title: "Krov pro RD",
+    location: "Olšová Vrata",
+    description: "Realizace krovu pro rodinný dům.",
+    isGallery: true,
+    galleryImages: olsovaVrataImages,
   },
   {
     image: refPergola,
@@ -54,7 +77,7 @@ const projects = [
 ];
 
 const References = () => {
-  const [galleryOpen, setGalleryOpen] = useState(false);
+  const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   return (
@@ -70,14 +93,14 @@ const References = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
           {projects.map((project, index) => (
             <div
               key={index}
               className={`group bg-card rounded-lg overflow-hidden border border-border card-hover ${
                 project.isGallery ? "cursor-pointer" : ""
               }`}
-              onClick={() => project.isGallery && setGalleryOpen(true)}
+              onClick={() => project.isGallery && setSelectedProject(project)}
             >
               <div className="aspect-square overflow-hidden relative">
                 <img
@@ -116,13 +139,13 @@ const References = () => {
         </div>
 
         {/* Gallery Dialog */}
-        <Dialog open={galleryOpen} onOpenChange={setGalleryOpen}>
+        <Dialog open={!!selectedProject} onOpenChange={() => setSelectedProject(null)}>
           <DialogContent className="max-w-5xl p-0 bg-card border-border">
             <div className="p-6 pb-0">
               <h3 className="text-2xl font-serif font-bold text-foreground">
-                Krov bytového domu Otovice
+                {selectedProject?.title}
               </h3>
-              <p className="text-muted-foreground">Karlovy Vary</p>
+              <p className="text-muted-foreground">{selectedProject?.location}</p>
             </div>
             <div className="p-6">
               <div className="px-12">
@@ -134,7 +157,7 @@ const References = () => {
                   className="w-full"
                 >
                   <CarouselContent className="-ml-2 md:-ml-4">
-                    {otoviceImages.map((image, index) => (
+                    {selectedProject?.galleryImages?.map((image, index) => (
                       <CarouselItem
                         key={index}
                         className="pl-2 md:pl-4 basis-full sm:basis-1/2"
