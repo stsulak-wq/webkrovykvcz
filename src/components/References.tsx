@@ -55,6 +55,14 @@ import olsovaVrata2_6 from "@/assets/olsova-vrata-2/krov-6.jpg";
 import olsovaVrata2_7 from "@/assets/olsova-vrata-2/krov-7.jpg";
 import olsovaVrata2_8 from "@/assets/olsova-vrata-2/krov-8.jpg";
 
+// Doubí garáž gallery images
+import garaz1 from "@/assets/doubi-garaz/garaz-1.jpg";
+import garaz2 from "@/assets/doubi-garaz/garaz-2.jpg";
+import garaz3 from "@/assets/doubi-garaz/garaz-3.jpg";
+import garaz4 from "@/assets/doubi-garaz/garaz-4.jpg";
+import garaz5 from "@/assets/doubi-garaz/garaz-5.jpg";
+import garaz6 from "@/assets/doubi-garaz/garaz-6.jpg";
+
 const otoviceImages = [
   { src: otovice1, alt: "Krov bytového domu Otovice - pohled 1" },
   { src: otovice2, alt: "Krov bytového domu Otovice - pohled 2" },
@@ -106,6 +114,15 @@ const olsovaVrata2Images = [
   { src: olsovaVrata2_8, alt: "Krov RD Olšová Vrata - pohled 8" },
 ];
 
+const doubiGarazImages = [
+  { src: garaz1, alt: "Garážové stání Doubí - pohled 1" },
+  { src: garaz2, alt: "Garážové stání Doubí - pohled 2" },
+  { src: garaz3, alt: "Garážové stání Doubí - pohled 3" },
+  { src: garaz4, alt: "Garážové stání Doubí - pohled 4" },
+  { src: garaz5, alt: "Garážové stání Doubí - pohled 5" },
+  { src: garaz6, alt: "Garážové stání Doubí - pohled 6" },
+];
+
 const projects = [
   {
     image: otovice2,
@@ -146,6 +163,14 @@ const projects = [
     description: "Kompletní realizace krovu pro rodinný dům.",
     isGallery: true,
     galleryImages: olsovaVrata2Images,
+  },
+  {
+    image: garaz3,
+    title: "Garážové stání",
+    location: "Doubí, Karlovy Vary",
+    description: "Dřevěný přístřešek pro parkování.",
+    isGallery: true,
+    galleryImages: doubiGarazImages,
   },
 ];
 
