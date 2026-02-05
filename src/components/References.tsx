@@ -45,6 +45,16 @@ import pergola5 from "@/assets/hajek-pergola/pergola-5.jpg";
 import pergola6 from "@/assets/hajek-pergola/pergola-6.jpg";
 import pergola7 from "@/assets/hajek-pergola/pergola-7.jpg";
 
+// Olšová Vrata 2 gallery images
+import olsovaVrata2_1 from "@/assets/olsova-vrata-2/krov-1.jpg";
+import olsovaVrata2_2 from "@/assets/olsova-vrata-2/krov-2.jpg";
+import olsovaVrata2_3 from "@/assets/olsova-vrata-2/krov-3.jpg";
+import olsovaVrata2_4 from "@/assets/olsova-vrata-2/krov-4.jpg";
+import olsovaVrata2_5 from "@/assets/olsova-vrata-2/krov-5.jpg";
+import olsovaVrata2_6 from "@/assets/olsova-vrata-2/krov-6.jpg";
+import olsovaVrata2_7 from "@/assets/olsova-vrata-2/krov-7.jpg";
+import olsovaVrata2_8 from "@/assets/olsova-vrata-2/krov-8.jpg";
+
 const otoviceImages = [
   { src: otovice1, alt: "Krov bytového domu Otovice - pohled 1" },
   { src: otovice2, alt: "Krov bytového domu Otovice - pohled 2" },
@@ -85,6 +95,17 @@ const balkonyImages = [
   { src: balkon10, alt: "Dřevěné balkony Gelsenkirchen - pohled 10" },
 ];
 
+const olsovaVrata2Images = [
+  { src: olsovaVrata2_1, alt: "Krov RD Olšová Vrata - pohled 1" },
+  { src: olsovaVrata2_2, alt: "Krov RD Olšová Vrata - detail konstrukce" },
+  { src: olsovaVrata2_3, alt: "Krov RD Olšová Vrata - pohled 3" },
+  { src: olsovaVrata2_4, alt: "Krov RD Olšová Vrata - pohled 4" },
+  { src: olsovaVrata2_5, alt: "Krov RD Olšová Vrata - pohled 5" },
+  { src: olsovaVrata2_6, alt: "Krov RD Olšová Vrata - pohled 6" },
+  { src: olsovaVrata2_7, alt: "Krov RD Olšová Vrata - pohled 7" },
+  { src: olsovaVrata2_8, alt: "Krov RD Olšová Vrata - pohled 8" },
+];
+
 const projects = [
   {
     image: otovice2,
@@ -117,6 +138,14 @@ const projects = [
     description: "Balkonový komplex do vnitrobloku pro bytový dům.",
     isGallery: true,
     galleryImages: balkonyImages,
+  },
+  {
+    image: olsovaVrata2_1,
+    title: "Krov pro RD",
+    location: "Olšová Vrata",
+    description: "Kompletní realizace krovu pro rodinný dům.",
+    isGallery: true,
+    galleryImages: olsovaVrata2Images,
   },
 ];
 
