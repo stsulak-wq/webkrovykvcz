@@ -1,4 +1,4 @@
-import logoKv from "@/assets/logo-kv.png";
+
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -9,10 +9,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           {/* Company Info */}
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <img src={logoKv} alt="krovykv.cz logo" className="h-14 w-auto rounded-lg" />
-              <span className="text-2xl font-serif font-bold">krovykv.cz</span>
-            </div>
+            <span className="text-2xl font-serif font-bold mb-4 block">krovykv.cz</span>
             <div className="text-primary-foreground/70 text-sm space-y-1">
               <p className="font-semibold text-primary-foreground">Údaje z obchodního rejstříku:</p>
               <p>krovykv.cz s.r.o.</p>
