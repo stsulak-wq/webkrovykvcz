@@ -48,8 +48,8 @@ const About = () => {
             </p>
             <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
               V roce 1992 začal můj otec podnikat jako OSVČ a postupně 
-              vybudoval základy dnešní firmy. Dnes pokračujeme jako <strong>krovykv.cz s.r.o.</strong> 
-              s využitím moderních technologií a tradičních tesařských postupů.
+               vybudoval základy dnešní firmy. Dnes pokračujeme jako <strong>krovykv.cz s.r.o.</strong>{' '}
+               s využitím moderních technologií a tradičních tesařských postupů.
             </p>
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
               Chápeme, že každý projekt je jiný. Někdy je potřeba rychlost a jednoduchost, 
