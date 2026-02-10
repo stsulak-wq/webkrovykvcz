@@ -1,0 +1,29 @@
+name: Nahrani na Active 24
+
+on:
+  push:
+    branches:
+      - main  # Toto spustí nahrávání, jakmile Lovable synchronizuje kód
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🚚 Stažení kódu z GitHubu
+        uses: actions/checkout@v4
+
+      - name: 🏗️ Příprava webu (Build)
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm install
+      - run: npm run build
+
+      - name: 🚀 Odeslání souborů na Active 24
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./dist/
+          server-dir: /www/
