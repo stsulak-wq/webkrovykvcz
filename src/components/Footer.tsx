@@ -10,7 +10,7 @@ const Footer = () => {
           {/* Company Info */}
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <img src={logoKv} alt="krovykv.cz logo" className="h-10 w-auto" style={{ filter: 'invert(1) brightness(2)' }} />
+              <img src={logoKv} alt="krovykv.cz logo" className="h-14 w-auto" style={{ filter: 'invert(1) brightness(2)' }} />
               <span className="text-2xl font-serif font-bold">krovykv.cz</span>
             </div>
             <div className="text-primary-foreground/70 text-sm space-y-1">
