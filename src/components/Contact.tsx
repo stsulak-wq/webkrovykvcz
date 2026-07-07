@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Phone, Mail, MapPin, Send, Upload, X, FileText, Image } from "lucide-react";
+import { Phone, Mail, MapPin, Send, Upload, X, FileText, Image, CheckCircle2 } from "lucide-react";
 import { toast } from "sonner";
 
 const Contact = () => {
@@ -14,6 +14,7 @@ const Contact = () => {
   });
   const [files, setFiles] = useState<File[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
