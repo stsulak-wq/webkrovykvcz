@@ -45,6 +45,7 @@ const Contact = () => {
   const [files, setFiles] = useState<File[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [errors, setErrors] = useState<FormErrors>({});
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -80,20 +81,53 @@ const Contact = () => {
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+    // Clear the field error when user starts editing
+    if (errors[name as keyof FormErrors]) {
+      setErrors((prev) => ({ ...prev, [name]: undefined }));
+    }
+  };
+
+  const handleBlur = (
+    e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    const fieldSchema = contactSchema.shape[name as keyof typeof contactSchema.shape];
+    if (!fieldSchema) return;
+    const result = fieldSchema.safeParse(value);
+    if (!result.success) {
+      setErrors((prev) => ({ ...prev, [name]: result.error.issues[0].message }));
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Validate all fields
+    const result = contactSchema.safeParse(formData);
+    if (!result.success) {
+      const fieldErrors: FormErrors = {};
+      result.error.issues.forEach((issue) => {
+        const field = issue.path[0] as keyof FormErrors;
+        if (field && !fieldErrors[field]) {
+          fieldErrors[field] = issue.message;
+        }
+      });
+      setErrors(fieldErrors);
+      toast.error("Zkontrolujte prosím vyplněné údaje.");
+      return;
+    }
+
+    setErrors({});
     setIsSubmitting(true);
 
     try {
       // Create FormData for submission
       const formDataToSend = new FormData();
-      formDataToSend.append("name", formData.name.trim());
-      formDataToSend.append("email", formData.email.trim());
-      formDataToSend.append("phone", formData.phone.trim());
-      formDataToSend.append("message", formData.message.trim());
-      formDataToSend.append("_subject", `Nová zpráva z webu krovykv.cz od ${formData.name.trim()}`);
+      formDataToSend.append("name", result.data.name);
+      formDataToSend.append("email", result.data.email);
+      formDataToSend.append("phone", result.data.phone);
+      formDataToSend.append("message", result.data.message);
+      formDataToSend.append("_subject", `Nová zpráva z webu krovykv.cz od ${result.data.name}`);
       formDataToSend.append("_captcha", "false");
       formDataToSend.append("_template", "table");
       
