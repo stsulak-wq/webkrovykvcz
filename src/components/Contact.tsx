@@ -278,9 +278,18 @@ const Contact = () => {
                   required
                   value={formData.name}
                   onChange={handleChange}
+                  onBlur={handleBlur}
                   placeholder="Jan Novák"
-                  className="w-full"
+                  aria-invalid={!!errors.name}
+                  aria-describedby={errors.name ? "name-error" : undefined}
+                  className={`w-full ${errors.name ? "border-destructive focus-visible:ring-destructive" : ""}`}
                 />
+                {errors.name && (
+                  <p id="name-error" role="alert" className="mt-1.5 flex items-center gap-1.5 text-sm text-destructive">
+                    <AlertCircle className="w-4 h-4 flex-shrink-0" />
+                    <span>{errors.name}</span>
+                  </p>
+                )}
               </div>
 
               <div>
@@ -297,9 +306,18 @@ const Contact = () => {
                   required
                   value={formData.email}
                   onChange={handleChange}
+                  onBlur={handleBlur}
                   placeholder="jan@email.cz"
-                  className="w-full"
+                  aria-invalid={!!errors.email}
+                  aria-describedby={errors.email ? "email-error" : undefined}
+                  className={`w-full ${errors.email ? "border-destructive focus-visible:ring-destructive" : ""}`}
                 />
+                {errors.email && (
+                  <p id="email-error" role="alert" className="mt-1.5 flex items-center gap-1.5 text-sm text-destructive">
+                    <AlertCircle className="w-4 h-4 flex-shrink-0" />
+                    <span>{errors.email}</span>
+                  </p>
+                )}
               </div>
 
               <div>
@@ -315,9 +333,18 @@ const Contact = () => {
                   type="tel"
                   value={formData.phone}
                   onChange={handleChange}
+                  onBlur={handleBlur}
                   placeholder="+420 123 456 789"
-                  className="w-full"
+                  aria-invalid={!!errors.phone}
+                  aria-describedby={errors.phone ? "phone-error" : undefined}
+                  className={`w-full ${errors.phone ? "border-destructive focus-visible:ring-destructive" : ""}`}
                 />
+                {errors.phone && (
+                  <p id="phone-error" role="alert" className="mt-1.5 flex items-center gap-1.5 text-sm text-destructive">
+                    <AlertCircle className="w-4 h-4 flex-shrink-0" />
+                    <span>{errors.phone}</span>
+                  </p>
+                )}
               </div>
 
               <div>
@@ -334,10 +361,24 @@ const Contact = () => {
                   rows={5}
                   value={formData.message}
                   onChange={handleChange}
+                  onBlur={handleBlur}
                   placeholder="Popište váš projekt nebo dotaz..."
-                  className="w-full resize-none"
+                  aria-invalid={!!errors.message}
+                  aria-describedby={errors.message ? "message-error" : "message-hint"}
+                  className={`w-full resize-none ${errors.message ? "border-destructive focus-visible:ring-destructive" : ""}`}
                 />
+                {errors.message ? (
+                  <p id="message-error" role="alert" className="mt-1.5 flex items-center gap-1.5 text-sm text-destructive">
+                    <AlertCircle className="w-4 h-4 flex-shrink-0" />
+                    <span>{errors.message}</span>
+                  </p>
+                ) : (
+                  <p id="message-hint" className="mt-1.5 text-xs text-muted-foreground">
+                    {formData.message.trim().length}/2000 znaků (min. 10)
+                  </p>
+                )}
               </div>
+
 
               {/* File Upload */}
               <div>
