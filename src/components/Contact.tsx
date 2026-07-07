@@ -1,9 +1,39 @@
 import { useState, useRef } from "react";
+import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Phone, Mail, MapPin, Send, Upload, X, FileText, Image, CheckCircle2 } from "lucide-react";
+import { Phone, Mail, MapPin, Send, Upload, X, FileText, Image, CheckCircle2, AlertCircle } from "lucide-react";
 import { toast } from "sonner";
+
+const contactSchema = z.object({
+  name: z
+    .string()
+    .trim()
+    .min(2, { message: "Jméno musí mít alespoň 2 znaky." })
+    .max(100, { message: "Jméno může mít maximálně 100 znaků." }),
+  email: z
+    .string()
+    .trim()
+    .min(1, { message: "E-mail je povinný." })
+    .email({ message: "Zadejte platnou e-mailovou adresu (např. jan@email.cz)." })
+    .max(255, { message: "E-mail může mít maximálně 255 znaků." }),
+  phone: z
+    .string()
+    .trim()
+    .max(30, { message: "Telefon může mít maximálně 30 znaků." })
+    .refine(
+      (val) => val === "" || /^[+\d\s()-]{9,}$/.test(val),
+      { message: "Zadejte platné telefonní číslo (min. 9 číslic)." }
+    ),
+  message: z
+    .string()
+    .trim()
+    .min(10, { message: "Zpráva musí mít alespoň 10 znaků." })
+    .max(2000, { message: "Zpráva může mít maximálně 2000 znaků." }),
+});
+
+type FormErrors = Partial<Record<"name" | "email" | "phone" | "message", string>>;
 
 const Contact = () => {
   const [formData, setFormData] = useState({
