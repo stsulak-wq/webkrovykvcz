@@ -84,7 +84,7 @@ const Admin = () => {
       toast.error("Nelze načíst zprávy: " + error.message);
       return;
     }
-    setSubmissions((data ?? []) as Submission[]);
+    setSubmissions((data ?? []) as unknown as Submission[]);
   };
 
   const handleRefresh = async () => {
