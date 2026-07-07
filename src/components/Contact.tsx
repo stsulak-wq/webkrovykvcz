@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Phone, Mail, MapPin, Send, Upload, X, FileText, Image } from "lucide-react";
+import { Phone, Mail, MapPin, Send, Upload, X, FileText, Image, CheckCircle2 } from "lucide-react";
 import { toast } from "sonner";
 
 const Contact = () => {
@@ -14,6 +14,7 @@ const Contact = () => {
   });
   const [files, setFiles] = useState<File[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -80,6 +81,7 @@ const Contact = () => {
         toast.success("Zpráva byla odeslána! Brzy se vám ozveme.");
         setFormData({ name: "", email: "", phone: "", message: "" });
         setFiles([]);
+        setIsSubmitted(true);
       } else {
         throw new Error("Chyba při odesílání");
       }
@@ -177,6 +179,26 @@ const Contact = () => {
             <h3 className="text-2xl font-serif font-semibold text-foreground mb-6">
               Pošlete nám zprávu
             </h3>
+            {isSubmitted ? (
+              <div className="flex flex-col items-center justify-center text-center py-10 px-4 animate-in fade-in zoom-in-95 duration-500">
+                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-5">
+                  <CheckCircle2 className="w-10 h-10 text-primary" strokeWidth={2} />
+                </div>
+                <h4 className="text-xl font-serif font-semibold text-foreground mb-3">
+                  Děkujeme za vaši zprávu!
+                </h4>
+                <p className="text-muted-foreground mb-6 max-w-sm">
+                  Zpráva byla úspěšně odeslána na <strong>info@krovykv.cz</strong>. Ozveme se vám co nejdříve, obvykle do 24 hodin.
+                </p>
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={() => setIsSubmitted(false)}
+                >
+                  Odeslat další zprávu
+                </Button>
+              </div>
+            ) : (
             <form onSubmit={handleSubmit} className="space-y-5">
               <div>
                 <label
@@ -332,6 +354,7 @@ const Contact = () => {
                 )}
               </Button>
             </form>
+            )}
           </div>
         </div>
       </div>
