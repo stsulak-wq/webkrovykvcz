@@ -120,8 +120,31 @@ const Contact = () => {
     setErrors({});
     setIsSubmitting(true);
 
+    // Step 1: Save to database FIRST so nothing is lost even if FormSubmit fails
+    let submissionId: string | null = null;
     try {
-      // Create FormData for submission
+      const { data: inserted, error: dbError } = await supabase
+        .from("contact_submissions")
+        .insert({
+          name: result.data.name,
+          email: result.data.email,
+          phone: result.data.phone || null,
+          message: result.data.message,
+          files_count: files.length,
+          files_info: files.length > 0 ? files.map((f) => ({ name: f.name, size: f.size, type: f.type })) : null,
+          delivery_status: "pending",
+          user_agent: navigator.userAgent.slice(0, 500),
+        })
+        .select("id")
+        .single();
+      if (dbError) console.error("DB insert error:", dbError);
+      else submissionId = inserted?.id ?? null;
+    } catch (err) {
+      console.error("DB insert exception:", err);
+    }
+
+    // Step 2: Send via FormSubmit
+    try {
       const formDataToSend = new FormData();
       formDataToSend.append("name", result.data.name);
       formDataToSend.append("email", result.data.email);
@@ -130,8 +153,7 @@ const Contact = () => {
       formDataToSend.append("_subject", `Nová zpráva z webu krovykv.cz od ${result.data.name}`);
       formDataToSend.append("_captcha", "false");
       formDataToSend.append("_template", "table");
-      
-      // Add files as attachments (FormSubmit supports up to 5MB total)
+
       files.forEach((file) => {
         formDataToSend.append("attachment", file);
       });
@@ -147,11 +169,18 @@ const Contact = () => {
         setFiles([]);
         setIsSubmitted(true);
       } else {
-        throw new Error("Chyba při odesílání");
+        throw new Error(`FormSubmit HTTP ${response.status}`);
       }
     } catch (error) {
-      console.error("Form submission error:", error);
-      toast.error("Nepodařilo se odeslat zprávu. Zkuste to prosím znovu nebo nás kontaktujte telefonicky.");
+      console.error("Form submission error:", error, "Submission ID:", submissionId);
+      if (submissionId) {
+        toast.error("Zprávu jsme uložili, ale e-mail se nepodařilo odeslat. Ozveme se vám co nejdřív.");
+        setFormData({ name: "", email: "", phone: "", message: "" });
+        setFiles([]);
+        setIsSubmitted(true);
+      } else {
+        toast.error("Nepodařilo se odeslat zprávu. Zkuste to prosím znovu nebo nás kontaktujte telefonicky.");
+      }
     } finally {
       setIsSubmitting(false);
     }
