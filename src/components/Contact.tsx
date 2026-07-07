@@ -81,6 +81,7 @@ const Contact = () => {
         toast.success("Zpráva byla odeslána! Brzy se vám ozveme.");
         setFormData({ name: "", email: "", phone: "", message: "" });
         setFiles([]);
+        setIsSubmitted(true);
       } else {
         throw new Error("Chyba při odesílání");
       }
