@@ -1,9 +1,39 @@
 import { useState, useRef } from "react";
+import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Phone, Mail, MapPin, Send, Upload, X, FileText, Image, CheckCircle2 } from "lucide-react";
+import { Phone, Mail, MapPin, Send, Upload, X, FileText, Image, CheckCircle2, AlertCircle } from "lucide-react";
 import { toast } from "sonner";
+
+const contactSchema = z.object({
+  name: z
+    .string()
+    .trim()
+    .min(2, { message: "Jméno musí mít alespoň 2 znaky." })
+    .max(100, { message: "Jméno může mít maximálně 100 znaků." }),
+  email: z
+    .string()
+    .trim()
+    .min(1, { message: "E-mail je povinný." })
+    .email({ message: "Zadejte platnou e-mailovou adresu (např. jan@email.cz)." })
+    .max(255, { message: "E-mail může mít maximálně 255 znaků." }),
+  phone: z
+    .string()
+    .trim()
+    .max(30, { message: "Telefon může mít maximálně 30 znaků." })
+    .refine(
+      (val) => val === "" || /^[+\d\s()-]{9,}$/.test(val),
+      { message: "Zadejte platné telefonní číslo (min. 9 číslic)." }
+    ),
+  message: z
+    .string()
+    .trim()
+    .min(10, { message: "Zpráva musí mít alespoň 10 znaků." })
+    .max(2000, { message: "Zpráva může mít maximálně 2000 znaků." }),
+});
+
+type FormErrors = Partial<Record<"name" | "email" | "phone" | "message", string>>;
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -15,6 +45,7 @@ const Contact = () => {
   const [files, setFiles] = useState<File[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [errors, setErrors] = useState<FormErrors>({});
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -50,20 +81,53 @@ const Contact = () => {
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+    // Clear the field error when user starts editing
+    if (errors[name as keyof FormErrors]) {
+      setErrors((prev) => ({ ...prev, [name]: undefined }));
+    }
+  };
+
+  const handleBlur = (
+    e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    const fieldSchema = contactSchema.shape[name as keyof typeof contactSchema.shape];
+    if (!fieldSchema) return;
+    const result = fieldSchema.safeParse(value);
+    if (!result.success) {
+      setErrors((prev) => ({ ...prev, [name]: result.error.issues[0].message }));
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Validate all fields
+    const result = contactSchema.safeParse(formData);
+    if (!result.success) {
+      const fieldErrors: FormErrors = {};
+      result.error.issues.forEach((issue) => {
+        const field = issue.path[0] as keyof FormErrors;
+        if (field && !fieldErrors[field]) {
+          fieldErrors[field] = issue.message;
+        }
+      });
+      setErrors(fieldErrors);
+      toast.error("Zkontrolujte prosím vyplněné údaje.");
+      return;
+    }
+
+    setErrors({});
     setIsSubmitting(true);
 
     try {
       // Create FormData for submission
       const formDataToSend = new FormData();
-      formDataToSend.append("name", formData.name.trim());
-      formDataToSend.append("email", formData.email.trim());
-      formDataToSend.append("phone", formData.phone.trim());
-      formDataToSend.append("message", formData.message.trim());
-      formDataToSend.append("_subject", `Nová zpráva z webu krovykv.cz od ${formData.name.trim()}`);
+      formDataToSend.append("name", result.data.name);
+      formDataToSend.append("email", result.data.email);
+      formDataToSend.append("phone", result.data.phone);
+      formDataToSend.append("message", result.data.message);
+      formDataToSend.append("_subject", `Nová zpráva z webu krovykv.cz od ${result.data.name}`);
       formDataToSend.append("_captcha", "false");
       formDataToSend.append("_template", "table");
       
@@ -214,9 +278,18 @@ const Contact = () => {
                   required
                   value={formData.name}
                   onChange={handleChange}
+                  onBlur={handleBlur}
                   placeholder="Jan Novák"
-                  className="w-full"
+                  aria-invalid={!!errors.name}
+                  aria-describedby={errors.name ? "name-error" : undefined}
+                  className={`w-full ${errors.name ? "border-destructive focus-visible:ring-destructive" : ""}`}
                 />
+                {errors.name && (
+                  <p id="name-error" role="alert" className="mt-1.5 flex items-center gap-1.5 text-sm text-destructive">
+                    <AlertCircle className="w-4 h-4 flex-shrink-0" />
+                    <span>{errors.name}</span>
+                  </p>
+                )}
               </div>
 
               <div>
@@ -233,9 +306,18 @@ const Contact = () => {
                   required
                   value={formData.email}
                   onChange={handleChange}
+                  onBlur={handleBlur}
                   placeholder="jan@email.cz"
-                  className="w-full"
+                  aria-invalid={!!errors.email}
+                  aria-describedby={errors.email ? "email-error" : undefined}
+                  className={`w-full ${errors.email ? "border-destructive focus-visible:ring-destructive" : ""}`}
                 />
+                {errors.email && (
+                  <p id="email-error" role="alert" className="mt-1.5 flex items-center gap-1.5 text-sm text-destructive">
+                    <AlertCircle className="w-4 h-4 flex-shrink-0" />
+                    <span>{errors.email}</span>
+                  </p>
+                )}
               </div>
 
               <div>
@@ -251,9 +333,18 @@ const Contact = () => {
                   type="tel"
                   value={formData.phone}
                   onChange={handleChange}
+                  onBlur={handleBlur}
                   placeholder="+420 123 456 789"
-                  className="w-full"
+                  aria-invalid={!!errors.phone}
+                  aria-describedby={errors.phone ? "phone-error" : undefined}
+                  className={`w-full ${errors.phone ? "border-destructive focus-visible:ring-destructive" : ""}`}
                 />
+                {errors.phone && (
+                  <p id="phone-error" role="alert" className="mt-1.5 flex items-center gap-1.5 text-sm text-destructive">
+                    <AlertCircle className="w-4 h-4 flex-shrink-0" />
+                    <span>{errors.phone}</span>
+                  </p>
+                )}
               </div>
 
               <div>
@@ -270,10 +361,24 @@ const Contact = () => {
                   rows={5}
                   value={formData.message}
                   onChange={handleChange}
+                  onBlur={handleBlur}
                   placeholder="Popište váš projekt nebo dotaz..."
-                  className="w-full resize-none"
+                  aria-invalid={!!errors.message}
+                  aria-describedby={errors.message ? "message-error" : "message-hint"}
+                  className={`w-full resize-none ${errors.message ? "border-destructive focus-visible:ring-destructive" : ""}`}
                 />
+                {errors.message ? (
+                  <p id="message-error" role="alert" className="mt-1.5 flex items-center gap-1.5 text-sm text-destructive">
+                    <AlertCircle className="w-4 h-4 flex-shrink-0" />
+                    <span>{errors.message}</span>
+                  </p>
+                ) : (
+                  <p id="message-hint" className="mt-1.5 text-xs text-muted-foreground">
+                    {formData.message.trim().length}/2000 znaků (min. 10)
+                  </p>
+                )}
               </div>
+
 
               {/* File Upload */}
               <div>
