@@ -71,7 +71,7 @@ const Contact = () => {
         formDataToSend.append("attachment", file);
       });
 
-      const response = await fetch("https://formsubmit.co/ajax/info@gmail.com", {
+      const response = await fetch("https://formsubmit.co/ajax/info@krovykv.cz", {
         method: "POST",
         body: formDataToSend,
       });
