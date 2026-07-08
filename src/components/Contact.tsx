@@ -144,37 +144,63 @@ const Contact = () => {
       console.error("DB insert exception:", err);
     }
 
-    // Step 2: Send via FormSubmit
+    // Step 2: Enqueue notification e-mail to owner + confirmation to sender
+    const filesInfo = files.map((f) => ({ name: f.name, size: f.size, type: f.type }));
+    const submittedAt = new Date().toLocaleString("cs-CZ");
     try {
-      const formDataToSend = new FormData();
-      formDataToSend.append("name", result.data.name);
-      formDataToSend.append("email", result.data.email);
-      formDataToSend.append("phone", result.data.phone);
-      formDataToSend.append("message", result.data.message);
-      formDataToSend.append("_subject", `Nová zpráva z webu krovykv.cz od ${result.data.name}`);
-      formDataToSend.append("_captcha", "false");
-      formDataToSend.append("_template", "table");
-
-      files.forEach((file) => {
-        formDataToSend.append("attachment", file);
+      const notifyPromise = supabase.functions.invoke("send-transactional-email", {
+        body: {
+          templateName: "contact-notification",
+          idempotencyKey: submissionId ? `contact-notify-${submissionId}` : undefined,
+          templateData: {
+            name: result.data.name,
+            email: result.data.email,
+            phone: result.data.phone || "",
+            message: result.data.message,
+            filesCount: files.length,
+            filesInfo,
+            submittedAt,
+          },
+        },
       });
 
-      const response = await fetch("https://formsubmit.co/ajax/info@krovykv.cz", {
-        method: "POST",
-        body: formDataToSend,
+      const confirmPromise = supabase.functions.invoke("send-transactional-email", {
+        body: {
+          templateName: "contact-confirmation",
+          recipientEmail: result.data.email,
+          idempotencyKey: submissionId ? `contact-confirm-${submissionId}` : undefined,
+          templateData: {
+            name: result.data.name,
+            message: result.data.message,
+          },
+        },
       });
 
-      if (response.ok) {
-        toast.success("Zpráva byla odeslána! Brzy se vám ozveme.");
-        setFormData({ name: "", email: "", phone: "", message: "" });
-        setFiles([]);
-        setIsSubmitted(true);
-      } else {
-        throw new Error(`FormSubmit HTTP ${response.status}`);
+      const [notifyRes, confirmRes] = await Promise.all([notifyPromise, confirmPromise]);
+      if (notifyRes.error) throw notifyRes.error;
+      if (confirmRes.error) console.warn("Confirmation email error:", confirmRes.error);
+
+      if (submissionId) {
+        await supabase
+          .from("contact_submissions")
+          .update({ delivery_status: "queued" })
+          .eq("id", submissionId);
       }
+
+      toast.success("Zpráva byla odeslána! Brzy se vám ozveme.");
+      setFormData({ name: "", email: "", phone: "", message: "" });
+      setFiles([]);
+      setIsSubmitted(true);
     } catch (error) {
       console.error("Form submission error:", error, "Submission ID:", submissionId);
       if (submissionId) {
+        await supabase
+          .from("contact_submissions")
+          .update({
+            delivery_status: "failed",
+            delivery_error: error instanceof Error ? error.message : String(error),
+          })
+          .eq("id", submissionId);
         toast.error("Zprávu jsme uložili, ale e-mail se nepodařilo odeslat. Ozveme se vám co nejdřív.");
         setFormData({ name: "", email: "", phone: "", message: "" });
         setFiles([]);
