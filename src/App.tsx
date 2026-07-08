@@ -8,6 +8,7 @@ import DreveneBalkony from "./pages/DreveneBalkony";
 import TesarskaKonzultace from "./pages/TesarskaKonzultace";
 import Auth from "./pages/Auth";
 import Admin from "./pages/Admin";
+import Unsubscribe from "./pages/Unsubscribe";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -24,6 +25,7 @@ const App = () => (
           <Route path="/tesarska-konzultace" element={<TesarskaKonzultace />} />
           <Route path="/auth" element={<Auth />} />
           <Route path="/admin" element={<Admin />} />
+          <Route path="/unsubscribe" element={<Unsubscribe />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
